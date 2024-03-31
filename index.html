@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap 5.3 -->
+    <link rel="stylesheet" href="assets/custom/css/style.css">
+    <link rel="stylesheet" href="assets/frameword/bootstrap/css/theme.min.css">
+    <link rel="stylesheet" href="assets/custom/css/header.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- css custom -->
+
+    <!-- angular -->
+    <script src="assets/frameword/angulerJS/angular.min.js"></script>
+    <script src="assets/frameword/angulerJS/angular-route.js"></script>
+
+    <!-- logo -->
+    <link rel="shortcut icon" href="assets/img/logo.svg" type="image/x-icon">
+    <title>EASY</title>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <!-- header -->
+    <section ng-include="'app/page/layout/header.html'"></section>
+    <!-- end header -->
+
+    <section class="container"  >
+        <ng-view></ng-view>
+    </section>
+
+    <!-- footer -->
+    <section 
+        ng-include="'app/page/layout/footer.html'"></section>
+    <!-- end footer -->
+
+
+
+    <!-- alert -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img loading="lazy" src="../assets/img/logo.svg" class="rounded me-2 logo_vip" alt="...">
+                <strong class="me-auto">Easy</strong>
+                <small>1 giây trước</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <!-- Nội dung thông báo sẽ được thay đổi tại đây -->
+            </div>
+        </div>
+    </div>
+
+    <!-- end alert -->
+
+    <!-- angular app -->
+    <script> 
+        const app = angular.module('myApp', ["ngRoute"]);
+
+            app.controller('quizCtrl', function($scope, $http, $routeParams, $interval) {
+
+            });
+
+    </script>
+    <script src="app/router.js"></script>
+    
+    <script src="app/controllers/myCtrl/myCtrl.js"></script>
+    <script src="app/controllers/myCtrl/khoaHocCtrl.js"></script>
+
+
+    <script src="app/controllers/myCtrl/header.js"></script>
+    <script src="app/controllers/myCtrl/slick.js"></script>
+    <script src="app/controllers/myCtrl/activeLink.js"></script>
+
+    <!-- page controller -->
+
+    <!--end page controller -->
+
+
+
+    <script src="assets/frameword/jquery/jquery-3.5.1.slim.min.js"></script>
+    <script src="assets/frameword/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+</body>
+
+
+</html>

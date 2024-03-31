@@ -1,0 +1,89 @@
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#!home" id="#top" style="text-decoration: none;"
+                class="text-primary">Trang
+                chủ</a>
+        </li>
+        <li class="breadcrumb-item"><a href="#!khoahoc" id="#top" style="text-decoration: none;"
+                class="text-primary">Khóa học</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">{{id_khoahoc|lowercase}}</li>
+    </ol>
+</nav>
+
+<!-- các khóa học -->
+<section class=" mt-4">
+    <div class="d-flex align-items-end">
+        <img loading="lazy" height="50" src="https://media.tenor.com/t9ppolkZgqUAAAAi/chubby-cute.gif" alt="">
+        <p style="margin-bottom: 0;" class="title_khoa_hoc">Các môn học {{id_khoahoc|lowercase}}</p>
+    </div>
+
+    <div class="py-6 mt-3" style="padding-top: 10px !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-3 col-xl-4 col-12" ng-repeat="item in monhoc">
+                    <div class="card mb-4 card-my_edit card-hover border">
+                        <a href="#!khoahoc/Android/123">
+                            <img src="../assets/img/course/course-bootstrap.jpg" alt="bootstrap"
+                                class="img-fluid w-100 rounded-top-3">
+                        </a>
+                        <div class="card-body">
+                            <h4 class="mb-3">
+                                <a href="#!khoahoc/Android/123" class="text-inherit text-color_custom">{{item.name}}</a>
+                            </h4>
+                            <div class="d-flex align-items-center mb-5 lh-1">
+                                <div>
+                                    <span class="text-inherit fw-semibold">4.9</span>
+                                    <span class="ms-1">
+                                        <i style="color: var(--bs-warning);" class="bi bi-star-fill"></i>
+                                        (31)
+                                    </span>
+                                </div>
+                                <div class=" mx-1">
+                                    <i style="color: var(--bs-warning);" class="bi bi-dot"></i>
+                                </div>
+                                <div>
+                                    <span class="text-inherit fw-semibold me-1">8</span> Giờ
+                                </div>
+                            </div>
+                            <a href="#!khoahoc/Android/123">
+                                Xem ngay
+                                <span class="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
+                                        </path>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- phân trang -->
+            <div class="d-flex justify-content-center mt-3">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+

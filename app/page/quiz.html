@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/custom/style.css">
+    <link rel="stylesheet" href="../assets/custom/base.css">
+    <link rel="stylesheet" href="../assets/custom/custom.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="shortcut icon" href="../assets/img/logo.svg" type="image/x-icon">
+    <title>EASY QUIZ</title>
+</head>
+
+<body>
+    <header class="mb-3 header_cus">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+            <div class="container-fluid d-flex justify-content-center">
+                <div>
+                    <a href=""><span
+                            style="font-size: 20px; font-weight: bold; font-family: 'Comic Sans MS', 'Comic Sans', cursive;">EASY
+                            QUIZ</span></a>
+                </div>
+            </div>
+        </nav>
+
+        <nav class="nav_vd navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img loading="lazy" class="logo_vip" width="50" src="../assets/img/logo.svg" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item ">
+                            <a class="nav-link active" href="index.html">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">Giới thiệu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="khoahoc.html">Khóa học</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="lienhe.html">Liên hệ & Góp ý </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="hoidap.html"> Hỏi đáp</a>
+                        </li>
+                    </ul>
+
+                    <div class="nav-item dropdown btn btn-outline-primary ms-3">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-person"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="info.html">Tài khoản</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+
+                    <button id="set_theme" class="btn btn-outline-primary ms-3"><i id="icon_theme"
+                            class="bi bi-brightness-high"></i>
+                    </button>
+
+                    <a class="btn btn-warning ms-3" href="">Đăng Nhập</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" id="#top" style="text-decoration: none;"
+                        class="text-primary">Trang
+                        chủ</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Trắc nghiệm JavaScript</li>
+            </ol>
+        </nav>
+
+        <div class="card mb-4 card-my_edit" style="border: none !important;">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+                    <div class="d-flex align-items-center">
+                        <a href="#"> <img width="100" src="../assets/img/course/course-javascript.jpg" alt="course"
+                                class="rounded"></a>
+                        <div class="ms-3">
+                            <h3 class="mb-0"><a href="#" class="text-inherit">Câu hỏi về javascript</a></h3>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-danger"><i class="fe fe-clock me-1 align-middle"></i>00:05:55</span>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Tiến độ
+                        </span>
+                        <span>Câu hỏi 1 trên 5</span>
+                    </div>
+
+                    <div class="mt-2">
+                        <div class="progress" style="height: 6px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 15%"
+                                aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mt-5">
+                    <span>Câu 1: </span>
+                    <h4 class="mb-3 mt-1 fw-bold">Trong JavaScript, các kiểu dữ liệu cơ bản bao gồm những gì?</h4>
+                    <div class="list-group">
+                        <div class="list-group-item list-group-item-action " aria-current="true">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault1" data-gtm-form-interact-field-id="0">
+                                <label class="form-check-label stretched-link" for="flexRadioDefault1">
+                                    Số, Chuỗi, Boolean, Đối tượng, Mảng
+                                </label>
+                            </div>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault2" data-gtm-form-interact-field-id="1">
+                                <label class="form-check-label stretched-link" for="flexRadioDefault2">
+                                    Integer, Float, Char, Double
+                                </label>
+                            </div>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault3" data-gtm-form-interact-field-id="2">
+                                <label class="form-check-label stretched-link" for="flexRadioDefault3">
+                                    Number, String, Boolean, Null, Undefined
+                                </label>
+                            </div>
+                        </div>
+                        <div class="list-group-item list-group-item-action">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault4" data-gtm-form-interact-field-id="3">
+                                <label class="form-check-label stretched-link" for="flexRadioDefault4">
+                                    Object, Array, Function, Date
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-3 d-flex justify-content-end">
+            <a type="button" class="btn btn-primary " href="quiz_result.html" >
+                Câu tiếp theo <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">
+                <a href="index.html" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                    <img class="logo_vip" src="../assets/img/logo.svg" alt="">
+                </a>
+                <span class="mb-3 mb-md-0 text-body-secondary">© 2024 vudevweb, Inc</span>
+            </div>
+
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-facebook"></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-twitter"></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-instagram"></i></a></li>
+            </ul>
+        </footer>
+    </div>
+
+
+    <script src="../assets/jquery/jquery-3.5.1.slim.min.js"></script>
+    <script src="../assets/custom/app.js"></script>
+    <script src="../assets/custom/theme.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="assets/img/logo.svg" class="rounded me-2 logo_vip" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small>1 giây trước</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <!-- Nội dung thông báo sẽ được thay đổi tại đây -->
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
