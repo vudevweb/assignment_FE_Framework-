@@ -3,120 +3,120 @@
         "id": "ADAV",
         "id_kh" : "ANDROID",
         "name": "Lập trình Android nâng cao",
-        "logo": "ADAV.jpg"
+        "logo": "android_vudo.jpeg"
     },
     {
         "id": "ADBS",
         "id_kh" : "ANDROID",
         "name": "Lập trình Android cơ bản",
-        "logo": "ADBS.jpg"
+        "logo": "android_vudo.jpeg"
     },
     {
         "id": "ADTE",
         "id_kh" : "ANDROID",
         "name": "Kiểm thử và triển khai ứng dụng Android",
-        "logo": "ADTE.jpg"
+        "logo": "android_vudo.jpeg"
     },
     {
         "id": "ADUI",
         "id_kh" : "ANDROID",
         "name": "Thiết kế giao diện trên Android",
-        "logo": "ADUI.jpg"
+        "logo": "android_vudo.jpeg"
     },
     {
         "id": "ASNE",
         "id_kh" : "DOTNET",
         "name": "Lập trình ASP.NET",
-        "logo": "ASNE.png"
+        "logo": "dotnet_vudo.png"
     },
     {
         "id": "CLCO",
         "id_kh" : "DOTNET",
         "name": "Điện toán đám mây",
-        "logo": "CLCO.jpg"
+        "logo": "cloud_vudo.jpeg"
     },
     {
         "id": "DBAV",
         "id_kh" : "DATABASE",
         "name": "SQL Server",
-        "logo": "DBAV.png"
+        "logo": "sqlServer_vudo.jpg"
     },
     {
         "id": "DBBS",
         "id_kh" : "DATABASE",
         "name": "Cơ sở dữ liệu",
-        "logo": "DBBS.png"
+        "logo": "database_vudo.png"
     },
     {
         "id": "GAME",
         "id_kh" : "GAME",
         "name": "Lập trình game 2D",
-        "logo": "GAME.png"
+        "logo": "game2d_vudo.jpg"
     },
     {
         "id": "HTCS",
         "id_kh" : "WEB",
         "name": "HTML5 và CSS3",
-        "logo": "HTCS.jpg"
+        "logo": "html&css_vudo.png"
     },
     {
         "id": "INMA",
         "id_kh" : "WEB",
         "name": "Internet Marketing",
-        "logo": "INMA.jpg"
+        "logo": "seo_vudo.jpg"
     },
     {
         "id": "JAAV",
         "id_kh" : "JAVA",
         "name": "Lập trình Java nâng cao",
-        "logo": "JAAV.png"
+        "logo": "java.png"
     },
     {
         "id": "JABS",
         "id_kh" : "JAVA",
         "name": "Lập trình hướng đối tượng với Java",
-        "logo": "JABS.png"
+        "logo": "javaOOP_vudo.jpg"
     },
     {
         "id": "JSPR",
         "id_kh" : "WEB",
         "name": "Lập trình JavaScript",
-        "logo": "JSPR.png"
+        "logo": "javascript_vudo.png"
     },
     {
         "id": "LAYO",
         "id_kh" : "WEB",
         "name": "Thiết kế layout",
-        "logo": "LAYO.jpg"
+        "logo": "layout_vudo.jpeg"
     },
     {
         "id": "MOWE",
         "id_kh" : "WEB",
         "name": "Thiết kế web cho điện thoại di động",
-        "logo": "MOWE.png"
+        "logo": "webapp_vudo.png"
     },
     {
         "id": "PHPP",
         "id_kh" : "WEB",
         "name": "Lập trình PHP",
-        "logo": "PHPP.png"
+        "logo": "PHPP.jpg"
     },
     {
         "id": "PMAG",
         "id_kh" : "GAME",
         "name": "Quản lý dự án với Agile",
-        "logo": "PMAG.jpg"
+        "logo": "agile_vudo.jfif"
     },
     {
         "id": "VBPR",
         "id_kh" : "DOTNET",
         "name": "Lập trình VB.NET",
-        "logo": "VBPR.png"
+        "logo": "VBNet_vudo.jpg"
     },
     {
         "id": "WEBU",
         "id_kh" : "WEB",
         "name": "Xây dựng trang web",
-        "logo": "WEBU.jpg"
+        "logo": "webdesign_vudo.jpg"
     }
 ]

@@ -9,7 +9,7 @@ app.controller('khoaHocCtrl', function($scope, $routeParams , $http, $location) 
             // console.log(response.data);
 
             $scope.monhoc = $scope.monhoc.filter(function(item) {
-                return item.id_kh === $scope.id_khoahoc;
+                return item.id_kh === $scope.id_khoahoc.toUpperCase();
             });
 
         // console.log($scope.monhoc);

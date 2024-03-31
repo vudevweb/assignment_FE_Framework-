@@ -27,6 +27,6 @@
     {
         "id": "WEB",
         "name": "Lập trình Web",
-        "img" : "java_kh.png"
+        "img" : "website.png"
     }
 ]

@@ -24,19 +24,19 @@
             <div class="row">
                 <div class="col-xxl-3 col-xl-4 col-12" ng-repeat="item in monhoc">
                     <div class="card mb-4 card-my_edit card-hover border">
-                        <a href="#!khoahoc/Android/123">
-                            <img src="../assets/img/course/course-bootstrap.jpg" alt="bootstrap"
+                        <a href="#!khoahoc/{{id_khoahoc|lowercase}}/{{item.id|lowercase}}">
+                            <img src="assets/img/thumbnail/{{item.logo}}" alt="bootstrap"
                                 class="img-fluid w-100 rounded-top-3">
                         </a>
                         <div class="card-body">
                             <h4 class="mb-3">
-                                <a href="#!khoahoc/Android/123" class="text-inherit text-color_custom">{{item.name}}</a>
+                                <a href="#!khoahoc/{{id_khoahoc|lowercase}}/{{item.id|lowercase}}" class="text-inherit text-color_custom">{{item.name}}</a>
                             </h4>
                             <div class="d-flex align-items-center mb-5 lh-1">
                                 <div>
                                     <span class="text-inherit fw-semibold">4.9</span>
                                     <span class="ms-1">
-                                        <i style="color: var(--bs-warning);" class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
                                         (31)
                                     </span>
                                 </div>
@@ -47,7 +47,7 @@
                                     <span class="text-inherit fw-semibold me-1">8</span> Giờ
                                 </div>
                             </div>
-                            <a href="#!khoahoc/Android/123">
+                            <a href="#!khoahoc/{{id_khoahoc|lowercase}}/{{item.id|lowercase}}">
                                 Xem ngay
                                 <span class="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
