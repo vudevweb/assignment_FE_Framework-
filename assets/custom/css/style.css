@@ -108,4 +108,8 @@
     max-width: 600px;
 }
 
+.container {
+    transition: .3s ease-in-out !important;
+}
+
 
