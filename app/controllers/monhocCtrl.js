@@ -11,11 +11,9 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $http, $location) {
     $http.get('app/db/Subjects.js').then(
         function (response) {
             $scope.ctmonhoc = response.data;
-            // console.log(response.data);
             $scope.ctmonhoc = $scope.ctmonhoc.filter(function (item) {
                 return item.id === $scope.id_monhoc.toUpperCase();
             });
-            // console.log($scope.ctmonhoc);
             $scope.ctmonhoc.forEach(element => {
                 $scope.ctmonhoc = element;
             });
