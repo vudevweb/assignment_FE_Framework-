@@ -6,14 +6,13 @@ app.controller('khoaHocCtrl', function($scope, $routeParams , $http, $location) 
     $http.get('app/db/Subjects.js').then(
         function(response) {
             $scope.monhoc = response.data;
-            console.log(response.data);
+            // console.log(response.data);
 
-            // Filter the monhoc array based on id_kh
             $scope.monhoc = $scope.monhoc.filter(function(item) {
                 return item.id_kh === $scope.id_khoahoc;
             });
 
-        console.log($scope.monhoc);
+        // console.log($scope.monhoc);
         },
         function(error) {
             alert('Error fetching khoahoc');
