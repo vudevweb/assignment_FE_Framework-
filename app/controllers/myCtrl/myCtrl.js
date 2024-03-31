@@ -29,10 +29,10 @@ app.controller('myCtrl', function ($scope, $rootScope, $http, $location) {
 
 
     $scope.khoahoc = [];
-    $http.get('app/db/Khoahoc.js').then(
+    $http.get('https://script.googleusercontent.com/macros/echo?user_content_key=40wtY-CTBaU3bKMsfUgW5axr9o_PKKgP4qhQIVzzDTBtSZxVaI1USnT9fGGVjQq41VmVqVSd9JLFgc3irHC43UKyXKxTfxJTm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnGXd75cnz04Fq-bBtwUBw8fNm8mByv7zK_CdwSinDguGigDaxHJ654BhZjrEWDx0VPjPWDJPuN_TmudY1aI7_ELqwxorvrx5x9z9Jw9Md8uu&lib=MNM_ZoxDfXITvFMNBZVKziwQP310mW9BT').then(
         function (response) {
             $scope.khoahoc = response.data;
-            // console.log(response.data);
+            console.log(response.data);
         },
         function (error) {
             alert('Error fetching khoahoc');
