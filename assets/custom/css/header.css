@@ -51,7 +51,7 @@
     outline: none;
 }
 
-.nav-link {
+.navbar .nav-link {
     font-weight: 500 !important;
     position: relative;
 }
@@ -67,7 +67,7 @@
     padding: .5rem;
 }
 @media (min-width: 911px) {
-    .nav-link::before {
+    .navbar .nav-link::before {
         content: "";
         position: absolute;
         bottom: 0;

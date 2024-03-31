@@ -1,126 +1,118 @@
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#!home" id="#top" style="text-decoration: none;" class="text-primary">Trang
+                chủ</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Thông tin tài khoản</li>
+    </ol>
+</nav>
 
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
-            aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#!home" id="#top" style="text-decoration: none;"
-                        class="text-primary">Trang
-                        chủ</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">Thông tin tài khoản</li>
-            </ol>
-        </nav>
-
-        <section class="h-100 gradient-custom-2 mt-3">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-lg-12 col-xl-12">
-                    <div class="">
-                        <div class="rounded-top d-flex flex-row"
-                        style="background: linear-gradient(to right, rgb(136, 40, 250), rgb(89, 169, 250)); height: 200px;">
-                            <div class="ms-4 mt-5 d-flex align-items-end">
-                                <div style="width: 137px;"> <img
-                                        src="https://ui-avatars.com/api/?background=random&name=vu+do"
-                                        alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                                        style="width: 100%; z-index: 1"></div>
-                                <div style="width: 137px;" class="ps-3 pb-2">
-                                    <Span class="fw-bold" style=" font-size: 20px; color: white !important;;">
-                                        Vũ Đỗ
-                                        <img width="20" src="../assets/img/tickxanh.png" alt="">
-                                    </Span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="row py-7">
-            <div class="col-3 card card-my_edit py-4 px-3" style="border: 0 !important;">
-                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home"
-                        role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="bi bi-people"></i> Chỉnh sửa thông tin</a>
-                    <a class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile"
-                        role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="bi bi-credit-card-2-front"></i> Đổi mật khẩu</a>
-                    <a class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#v-pills-settings"
-                        role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="bi bi-gear"></i> Cài đặt tài khoản</a>
-                </div>
-            </div>
-            <div class="col-9">
-                <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                        aria-labelledby="v-pills-home-tab">
-                        <div class="card card-my_edit p-4 px-5" style="border: 0 !important;">
-                            <form class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="inputName" class="form-label">Họ & tên</label>
-                                    <input value="Vũ Đỗ" type="text" class="form-control" id="inputName">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">Email</label>
-                                    <input value="vudevweb@gmail.com" type="email" class="form-control" id="">
-                                </div>
-                                <div class="col-12">
-                                    <label for="inputAddress" class="form-label">Địa chỉ</label>
-                                    <input value="Đà Nẵng" type="text" class="form-control" id="inputAddress"
-                                        placeholder="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputCity" class="form-label">Số điện thoại</label>
-                                    <input value="0779440918" type="text" class="form-control" id="inputCity">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="inputState" class="form-label">Giới tính</label>
-                                    <select id="inputState" class="form-select">
-                                        <option>Chọn...</option>
-                                        <option selected>Nam</option>
-                                        <option>Nữ</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2">
-                                    <label for="inputYear" class="form-label">Năm sinh</label>
-                                    <input value="2004" type="number" class="form-control" id="inputYear">
-                                </div>
-                                <div class="col-12 d-grid mt-5">
-                                    <button onclick="onToast('Đang phát triển','warning')" type="button"
-                                        class="btn btn-primary">Lưu</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                        aria-labelledby="v-pills-profile-tab">
-                        <div class="card card-my_edit p-4 px-5" style="border: 0 !important;">
-                            <form class="">
-                                <div class="mb-3">
-                                    <label for="inputName" class="form-label">Mật khẩu cũ</label>
-                                    <input placeholder="******************" value="" type="password"
-                                        class="form-control" id="inputName">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Mật khẩu mới</label>
-                                    <input placeholder="******************" value="" type="password"
-                                        class="form-control" id="">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Xác nhận mật khẩu mới</label>
-                                    <input placeholder="******************" value="" type="password"
-                                        class="form-control" id="">
-                                </div>
-                                <div class="col-12 d-grid mt-5">
-                                    <button onclick="onToast('Đang phát triển','warning')" type="button"
-                                        class="btn btn-primary">Lưu</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                        aria-labelledby="v-pills-settings-tab">
-                        <div class="card card-my_edit p-4 py-15" style="border: 0 !important;">
-                            <div class="d-flex justify-content-center">
-                                <button class="btn btn-danger" type="button">Xóa tài khoản</button>
-                            </div>
+<section class="h-100 gradient-custom-2 mt-3">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-12 col-xl-12">
+            <div class="">
+                <div class="rounded-top d-flex flex-row"
+                    style="background: linear-gradient(to right, rgb(136, 40, 250), rgb(89, 169, 250)); height: 200px;">
+                    <div class="ms-4 mt-5 d-flex align-items-end">
+                        <div style="width: 137px;"> <img src="https://ui-avatars.com/api/?background=random&name=vu+do"
+                                alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                                style="width: 100%; z-index: 1"></div>
+                        <div style="width: 137px;" class="ps-3 pb-2">
+                            <Span class="fw-bold" style=" font-size: 20px; color: white !important;;">
+                                Vũ Đỗ
+                                <img width="20" src="../assets/img/tickxanh.png" alt="">
+                            </Span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
+
+<div class="row py-4">
+    <div class="col-lg-3 col-md-12 col-12 card card-my_edit py-4 px-3">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab"
+                aria-controls="v-pills-home" aria-selected="true"><i class="bi bi-people"></i> Chỉnh sửa thông tin</a>
+            <a class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile" role="tab"
+                aria-controls="v-pills-profile" aria-selected="false"><i class="bi bi-credit-card-2-front"></i> Đổi mật
+                khẩu</a>
+            <a class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#v-pills-settings" role="tab"
+                aria-controls="v-pills-settings" aria-selected="false"><i class="bi bi-gear"></i> Cài đặt tài khoản</a>
+        </div>
+    </div>
+    <div class="col-lg-9 col-md-12 col-12">
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="card card-my_edit p-4 px-5" style="border: 0 !important;">
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputName" class="form-label">Họ & tên</label>
+                            <input value="Vũ Đỗ" type="text" class="form-control" id="inputName">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Email</label>
+                            <input value="vudevweb@gmail.com" type="email" class="form-control" id="">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputAddress" class="form-label">Địa chỉ</label>
+                            <input value="Đà Nẵng" type="text" class="form-control" id="inputAddress" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputCity" class="form-label">Số điện thoại</label>
+                            <input value="0779440918" type="text" class="form-control" id="inputCity">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputState" class="form-label">Giới tính</label>
+                            <select id="inputState" class="form-select">
+                                <option>Chọn...</option>
+                                <option selected>Nam</option>
+                                <option>Nữ</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="inputYear" class="form-label">Năm sinh</label>
+                            <input value="2004" type="number" class="form-control" id="inputYear">
+                        </div>
+                        <div class="col-12 d-grid mt-5">
+                            <button onclick="onToast('Đang phát triển','warning')" type="button"
+                                class="btn btn-primary">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <div class="card card-my_edit p-4 px-5" style="border: 0 !important;">
+                    <form class="">
+                        <div class="mb-3">
+                            <label for="inputName" class="form-label">Mật khẩu cũ</label>
+                            <input placeholder="******************" value="" type="password" class="form-control"
+                                id="inputName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Mật khẩu mới</label>
+                            <input placeholder="******************" value="" type="password" class="form-control" id="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Xác nhận mật khẩu mới</label>
+                            <input placeholder="******************" value="" type="password" class="form-control" id="">
+                        </div>
+                        <div class="col-12 d-grid mt-5">
+                            <button onclick="onToast('Đang phát triển','warning')" type="button"
+                                class="btn btn-primary">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <div class="card card-my_edit p-4 py-15" style="border: 0 !important;">
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-danger" type="button">Xóa tài khoản</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
