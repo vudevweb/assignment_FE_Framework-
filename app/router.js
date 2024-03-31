@@ -11,5 +11,5 @@ app.config(function ($routeProvider) {
         .when("/dangnhap", { templateUrl: "app/page/login.html", controller: 'myCtrl'})
 
         .when("/khoahoc/:id_khoahoc", { templateUrl: "app/page/monhoc.html", controller: 'khoaHocCtrl' })
-        .when("/khoahoc/:monhoc/:id", { templateUrl: "app/page/ctmonhoc.html", controller: 'myCtrl' })
+        .when("/khoahoc/:id_khoahoc/:id_monhoc", { templateUrl: "app/page/ctmonhoc.html", controller: 'monhocCtrl' })
 });
