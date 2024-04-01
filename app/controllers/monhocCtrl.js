@@ -1,4 +1,4 @@
-app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http,$interval) {
+app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $interval) {
     $scope.id_monhoc = $routeParams.id_monhoc;
     $scope.id_khoahoc = $routeParams.id_khoahoc;
 
@@ -17,34 +17,83 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http,$int
             }
         },
         function (error) {
-            console.error('Failed to fetch subject data:', error);
-            alert('Failed to fetch subject data!');
+            console.error('Lấy data môn học thất bại:', error);
+            alert('Lấy data môn học thất bại!');
         }
     );
 
+    // trang quiz
     $scope.diem = 0;
     $scope.tong_cau_hoi = 0;
     $scope.id_hien_tai = 0;
     $scope.tien_do = 0;
-    $scope.thoi_gian = 300;
+    $scope.thoi_gian = 5;
+    $scope.so_cau_dung = 0;
 
+    $scope.btn_prev = false;
+    $scope.result = false;
+    $scope.quiz = false;
+    $scope.status_start = false;
 
     $scope.cau_hoi = '';
     $scope.diem_cau_hoi = '';
     $scope.dap_an_dung = '';
     $scope.dap_an = [];
 
-    $scope.start = function() {
-        $scope.status = true;
+    $scope.start = function () {
+        $scope.diem = 0;
+        $scope.status_start = false;
+        $scope.quiz = true;
+        $scope.result = false;
         $scope.get_cauhoi();
+        $scope.gio_lam();
     }
 
-    $scope.reset = function() {
-        $scope.status = false;
+    $scope.gio_lam = function () {
+        var timer = $interval(function () {
+            if ($scope.thoi_gian <= 0) {
+                $interval.cancel(timer);
+                var confirmed = $window.confirm('Hết thời gian làm bài!');
+                if (confirmed) {
+                    $scope.show_result('time');
+                }
+            } else {
+                $scope.thoi_gian--;
+            }
+        }, 1000);
     }
 
-    $scope.get_cauhoi = function() {
-        $scope.fetch_cauhoi().then(function(cauhoi) {
+
+    $scope.reset = function () {
+        $scope.status_start = true;
+        $scope.quiz = false;
+        $scope.result = false;
+
+    }
+
+    $scope.show_result = function (type) {
+        if (type == "btn") {
+            var confirmm = confirm('Bạn chắc chắn muốn nộp bài ?');
+            if (confirmm) {
+                $scope.status_start = false;
+                $scope.quiz = false;
+                $scope.result = true;
+            }
+        } else if (type == 'time') {
+            $scope.status_start = false;
+            $scope.quiz = false;
+            $scope.result = true;
+        }
+
+    };
+
+    $scope.get_cauhoi = function () {
+        if ($scope.id_hien_tai > 0) {
+            $scope.btn_prev = true;
+        } else if ($scope.id_hien_tai <= 0) {
+            $scope.btn_prev = false;
+        }
+        $scope.fetch_cauhoi().then(function (cauhoi) {
             $scope.tong_cau_hoi = cauhoi.length;
             var data = cauhoi[$scope.id_hien_tai];
             $scope.cau_hoi = data.Text;
@@ -54,17 +103,18 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http,$int
         })
     }
 
-    $scope.check_dap_an = function() {
-        if(!$('input[name=flexRadioDefault]:checked').length) return 
+    $scope.check_dap_an = function () {
+        if (!$('input[name=flexRadioDefault]:checked').length) return
         var ans = $('input[name=flexRadioDefault]:checked').val();
-        if(ans == $scope.dap_an_dung) {
+        if (ans == $scope.dap_an_dung) {
             $scope.diem += $scope.diem_cau_hoi;
+            $scope.so_cau_dung++;
             console.log($scope.diem);
         } else {
             console.log($scope.diem);
         }
     }
-    $scope.fetch_cauhoi = function() {
+    $scope.fetch_cauhoi = function () {
         return $http.get(`app/db/Quizs/${$scope.id_monhoc.toUpperCase()}.js`).then(
             function (response) {
                 return response.data;
@@ -82,7 +132,7 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http,$int
             $scope.id_hien_tai--;
             $scope.get_cauhoi();
         }
-        $scope.tiendo = ($scope.id_hien_tai / $scope.tong_cau_hoi) * 100;
+        $scope.tien_do = ($scope.id_hien_tai / $scope.tong_cau_hoi) * 100;
     };
 
     $scope.next = function () {
@@ -91,82 +141,23 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http,$int
             $scope.id_hien_tai++;
             $scope.get_cauhoi();
         }
-        $scope.tiendo = ($scope.id_hien_tai / $scope.tong_cau_hoi) * 100;
+        $scope.tien_do = ($scope.id_hien_tai / $scope.tong_cau_hoi) * 100;
     };
 
-    var timer = $interval(function () {
-        if ($scope.thoigian <= 0) {
-            $interval.cancel(timer);
-            var confirmed = $window.confirm('Hết thời gian làm bài!');
-            if (confirmed) {
-                $window.location.href = '/android';
-            }
-        } else {
-            $scope.thoigian--;
-        }
-    }, 1000);
-
-    $scope.reset();
-});
 
 
-    // Lấy data câu hỏi
-
-    // =============================================
-
-
-    // // phân trang
-    // $scope.start_v1 = 0;
-    // $scope.pageSize = 1;
-    // $scope.tiendo = 0;
-    // $scope.prev = function () {
-    //     if ($scope.start_v1 > 0) {
-    //         $scope.start_v1 -= $scope.pageSize;
-    //     }
-    //     $scope.tiendo = ($scope.start_v1 / $scope.cauhoi.length) * 100;
-    // };
-
-    // $scope.next = function () {
-    //     if ($scope.start_v1 < ($scope.cauhoi.length - $scope.pageSize)) {
-    //         $scope.start_v1 += $scope.pageSize;
-    //     }
-    //     $scope.tiendo = ($scope.start_v1 / $scope.cauhoi.length) * 100;
-    // };
-
-    // // =============================================
-
-
-    // // thời gian
-    // $scope.thoigian = 300;
     // var timer = $interval(function () {
-    //     if ($scope.thoigian <= 0) {
+    //     if ($scope.thoi_gian <= 0) {
     //         $interval.cancel(timer);
     //         var confirmed = $window.confirm('Hết thời gian làm bài!');
     //         if (confirmed) {
     //             $window.location.href = '/android';
     //         }
     //     } else {
-    //         $scope.thoigian--;
+    //         $scope.thoi_gian--;
     //     }
     // }, 1000);
-    // // =============================================
 
-    // // Tính điểm
-    // $scope.diem = 0;
-    // $scope.check_cautraloi = function (id_dapan, id_dapan_dung, diem_cauhoi) {
-
-    //     console.log(id_dapan);
-    //     console.log(id_dapan_dung);
-    //     console.log(diem_cauhoi);
-    //     if (id_dapan === id_dapan_dung) {
-    //         $scope.diem += diem_cauhoi;
-    //     }
-    // };
-
-    // // =============================================
-    // const cauhoi_ne = document.querySelectorAll('.cauhoi_ne');
-    // cauhoi_ne.forEach(element => {
-    //     console.log(element);
-    // });
-
+    $scope.reset();
+});
 
