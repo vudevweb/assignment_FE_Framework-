@@ -14,7 +14,23 @@
     </ol>
 </nav>
 
-<div class="card mb-4 mt-4">
+<!-- bài trang bắt đầu -->
+<div class="card mt-4" ng-show="!status">
+    <div class="card-body p-10">
+        <div class="text-center">
+            <img src="/assets/img/Formula-amico.svg" alt="survey" class="img-fluid">
+            <div class="px-lg-18">
+                <h1>Chào mừng bạn</h1>
+                <p class="mb-0">Engage live or asynchronously with quiz and poll questions that participants complete at
+                    their own pace.</p>
+                <button type="button" ng-click="start()" class="btn btn-primary mt-4">Bắt đầu làm bài</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- bài quiz -->
+<div class="card mb-4 mt-4" ng-show="status">
     <div class="card-body">
         <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
             <div class="d-flex align-items-center">
@@ -25,44 +41,50 @@
                 </div>
             </div>
             <div>
-                <span class="text-danger"><i class="fe fe-clock me-1 align-middle"></i>00:05:{{thoigian}}</span>
+                <span class="text-danger"><i class="fe fe-clock me-1 align-middle"></i>00:05:{{thoi_gian}}</span>
                 <span>điểm : {{diem}}</span>
             </div>
         </div>
         <div class="mt-3">
             <div class="d-flex justify-content-between">
                 <span>Tiến độ</span>
-                <span>Câu hỏi {{$index + 1}} trên {{cauhoi.length}}</span>
+                <span>Câu hỏi {{id_hien_tai + 1}} trên {{tong_cau_hoi}}</span>
             </div>
             <div class="mt-2">
                 <div class="progress" style="height: 6px;">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: {{(start / cauhoi.length) * 100}}% !important" aria-valuenow="{{((start / cauhoi.length) * 100)}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{tien_do}}% !important" aria-valuenow="{{tien_do}}" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
         </div>
-        <div class="mt-5" ng-repeat="item in cauhoi | limitTo:pageSize:start">
-            <span>Câu {{$index + 1}}: </span>
-            <h4 class="mb-3 mt-1 fw-bold">{{item.Text}}</h4>
+        <div class="mt-5">
+            <span>Câu {{id_hien_tai + 1}}: </span>
+            <h4 class="mb-3 mt-1 fw-bold">{{cau_hoi}}</h4>
             <div class="list-group">
-                <div ng-repeat="ans in item.Answers"  class="list-group-item list-group-item-action" aria-current="true">
-                    <div class="form-check" ng-click="check_cautraloi(ans.Id, item.AnswerId, item.Marks)">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="cauhoi_{{ans.Id}}" ng-model="answer" ng-value="{{ans.Id}}">
-                        <label class="form-check-label stretched-link" for="cauhoi_{{ans.Id}}">{{ans.Text}}</label>
+                <div ng-repeat="dn in dap_an"  class="list-group-item list-group-item-action" aria-current="true">
+                    <div class="form-check" >
+                        <input class="form-check-input cauhoi_ne" type="radio" name="flexRadioDefault" 
+                        id="{{dn.Id}}"
+                        value="{{dn.Id}}"  >
+                        <label class="form-check-label stretched-link" for="{{dn.Id}}">{{dn.Text}}</label>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="mt-3 d-flex justify-content-between">
+        <button  class="btn btn-primary" ng-click="prev()">
+            <i class="bi bi-arrow-left"></i> Câu trước đó
+        </button>
+        <button class="btn btn-primary" ng-click="check_dap_an()">
+                check
+        </button>
+        <button class="btn btn-primary" ng-click="next()">
+            Câu tiếp theo <i class="bi bi-arrow-right"></i>
+        </button>
+    </div>
 </div>
 
-<div class="mt-3 d-flex justify-content-between">
-    <button class="btn btn-primary" ng-click="prev()">
-        <i class="bi bi-arrow-left"></i> Câu trước đó
-    </button>
-    <button class="btn btn-primary" ng-click="next()">
-        Câu tiếp theo <i class="bi bi-arrow-right"></i>
-    </button>
-</div>
+
 
 
 <div class="d-flex justify-content-center mt-4">
