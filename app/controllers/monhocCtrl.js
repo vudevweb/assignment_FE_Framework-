@@ -84,7 +84,6 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
             $scope.quiz = false;
             $scope.result = true;
         }
-
     };
 
     $scope.get_cauhoi = function () {
@@ -120,8 +119,8 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
                 return response.data;
             },
             function (error) {
-                console.error('Failed to fetch quiz questions:', error);
-                alert('Failed to fetch quiz questions!');
+                console.error('Get câu hỏi không thành công:', error);
+                alert('Get câu hỏi không thành công!');
             }
         );
     }
@@ -144,19 +143,6 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
         $scope.tien_do = ($scope.id_hien_tai / $scope.tong_cau_hoi) * 100;
     };
 
-
-
-    // var timer = $interval(function () {
-    //     if ($scope.thoi_gian <= 0) {
-    //         $interval.cancel(timer);
-    //         var confirmed = $window.confirm('Hết thời gian làm bài!');
-    //         if (confirmed) {
-    //             $window.location.href = '/android';
-    //         }
-    //     } else {
-    //         $scope.thoi_gian--;
-    //     }
-    // }, 1000);
 
     $scope.reset();
 });
