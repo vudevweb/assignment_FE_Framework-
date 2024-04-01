@@ -26,18 +26,20 @@
     <section ng-include="'app/page/layout/header.html'"></section>
     <!-- end header -->
 
-    <section class="container"  >
+    <!-- content -->
+    <section class="container">
         <ng-view></ng-view>
     </section>
+    <!-- end content -->
+
 
     <!-- footer -->
-    <section 
-        ng-include="'app/page/layout/footer.html'"></section>
+    <section ng-include="'app/page/layout/footer.html'"></section>
     <!-- end footer -->
 
 
 
-    <!-- alert -->
+    <!-- thông báo -->
     <div class="toast-container position-fixed top-0 end-0 p-3">
         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
@@ -52,40 +54,36 @@
         </div>
     </div>
 
-    <!-- end alert -->
+    <!-- end thông báo -->
 
     <!-- angular app -->
-    <script> 
+    <script>
         const app = angular.module('myApp', ["ngRoute"]);
-
-            app.controller('quizCtrl', function($scope, $http, $routeParams, $interval) {
-
-            });
-
     </script>
+
     <script src="app/router.js"></script>
-    
+
+    <!-- page controller -->
     <script src="app/controllers/myCtrl/myCtrl.js"></script>
     <script src="app/controllers/myCtrl/khoaHocCtrl.js"></script>
     <script src="app/controllers/monhocCtrl.js"></script>
-
-
     <script src="app/controllers/myCtrl/header.js"></script>
     <script src="app/controllers/myCtrl/slick.js"></script>
     <script src="app/controllers/myCtrl/activeLink.js"></script>
 
-    <!-- page controller -->
-
+    <script src="app/controllers/quizCtrl.js"></script>
     <!--end page controller -->
 
 
-
+    <!-- framework js  -->
     <script src="assets/frameword/jquery/jquery-3.5.1.slim.min.js"></script>
     <script src="assets/frameword/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/frameword/bootstrap/js/theme.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- end framework js  -->
 
 
 </body>
