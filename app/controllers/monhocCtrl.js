@@ -8,7 +8,7 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $http, $location) {
     $scope.ctmonhoc = [];
     $scope.name = '';
 
-    $http.get('app/db/Subjects.js').then(
+        $http.get('app/db/Subjects.js').then(
         function (response) {
             $scope.ctmonhoc = response.data;
             $scope.ctmonhoc = $scope.ctmonhoc.filter(function (item) {

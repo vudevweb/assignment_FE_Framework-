@@ -9,7 +9,7 @@ app.config(function ($routeProvider) {
         .when("/info", { templateUrl: "app/page/info.html", controller: 'myCtrl'})
         .when("/dangky", { templateUrl: "app/page/register.html", controller: 'myCtrl'})
         .when("/dangnhap", { templateUrl: "app/page/login.html", controller: 'myCtrl'})
-
         .when("/khoahoc/:id_khoahoc", { templateUrl: "app/page/monhoc.html", controller: 'khoaHocCtrl' })
         .when("/khoahoc/:id_khoahoc/:id_monhoc", { templateUrl: "app/page/ctmonhoc.html", controller: 'monhocCtrl' })
 });
+
