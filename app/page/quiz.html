@@ -16,7 +16,7 @@
 
 <!-- bài trang bắt đầu -->
 <div class="card mt-4" ng-show="status_start">
-    <div class="card-body p-10">
+    <div class="card-body p-10 " style="padding-top: 30px !important;">
         <div class="text-center">
             <img src="/assets/img/Formula-amico.svg" alt="survey" class="img-fluid">
             <div class="px-lg-18">
@@ -75,8 +75,8 @@
         <button class="btn btn-primary" ng-show="btn_prev" ng-click="prev()">
             <i class="bi bi-arrow-left"></i> Câu trước đó
         </button>
-        <button class="btn btn-success" ng-click="show_result('btn')">
-            <i class="bi bi-arrow-left"></i> Nộp bài
+        <button class="btn btn-success" ng-show="!btn_next" ng-click="show_result('btn')">
+            Nộp bài
         </button>
         <button class="btn btn-primary" ng-click="next()">
             Câu tiếp theo <i class="bi bi-arrow-right"></i>
@@ -86,7 +86,7 @@
 
 <!-- kêt quả -->
 <div class="card mt-4" ng-show="result">
-    <div style="padding: 4.5rem;" class="card-body p-10 text-center">
+    <div style="padding: 4.5rem; " class="card-body p-10 text-center">
         <div class="mb-4 ">
             <h2>🎉Xin chúc mừng. bạn đã hoàn thành!</h2>
             <p class="mb-0 px-lg-14">Bạn đã hoàn thành bài kiểm tra thành công. Bây giờ bạn bấm vào kết thúc và

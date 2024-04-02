@@ -21,16 +21,19 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
             alert('Lấy data môn học thất bại!');
         }
     );
+    // ===========================================================================================
+
 
     // trang quiz
     $scope.diem = 0;
     $scope.tong_cau_hoi = 0;
     $scope.id_hien_tai = 0;
     $scope.tien_do = 0;
-    $scope.thoi_gian = 5;
+    $scope.thoi_gian = 300;
     $scope.so_cau_dung = 0;
 
     $scope.btn_prev = false;
+    $scope.btn_next = true;
     $scope.result = false;
     $scope.quiz = false;
     $scope.status_start = false;
@@ -40,58 +43,76 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
     $scope.dap_an_dung = '';
     $scope.dap_an = [];
 
+    var timer;
+
     $scope.start = function () {
         $scope.diem = 0;
         $scope.status_start = false;
         $scope.quiz = true;
         $scope.result = false;
         $scope.get_cauhoi();
-        $scope.gio_lam();
+        $scope.startTimer();
     }
-
-    $scope.gio_lam = function () {
-        var timer = $interval(function () {
-            if ($scope.thoi_gian <= 0) {
-                $interval.cancel(timer);
-                var confirmed = $window.confirm('Hết thời gian làm bài!');
-                if (confirmed) {
-                    $scope.show_result('time');
-                }
-            } else {
-                $scope.thoi_gian--;
-            }
-        }, 1000);
-    }
-
 
     $scope.reset = function () {
         $scope.status_start = true;
         $scope.quiz = false;
         $scope.result = false;
-
+        $scope.stopTimer();
     }
 
     $scope.show_result = function (type) {
         if (type == "btn") {
-            var confirmm = confirm('Bạn chắc chắn muốn nộp bài ?');
-            if (confirmm) {
+            var confirm_m = $window.confirm('Bạn chắc chắn muốn nộp bài ?');
+            if (confirm_m) {
                 $scope.status_start = false;
                 $scope.quiz = false;
                 $scope.result = true;
+                $scope.stopTimer();
             }
-        } else if (type == 'time') {
+        } else if (type == 'het_time') {
             $scope.status_start = false;
             $scope.quiz = false;
             $scope.result = true;
+            $scope.stopTimer();
         }
     };
+
+    $scope.startTimer = function () {
+        timer = $interval(function () {
+            if ($scope.thoi_gian <= 0) {
+                $interval.cancel(timer);
+                var confirmed = $window.confirm('Hết thời gian làm bài!');
+                if (confirmed) {
+                    $scope.show_result('het_time');
+                }
+            } else {
+                $scope.thoi_gian--;
+                // console.log($scope.thoi_gian);
+            }
+        }, 1000);
+    }
+
+    $scope.stopTimer = function () {
+        if (angular.isDefined(timer)) {
+            $interval.cancel(timer);
+            timer = undefined;
+        }
+    }
 
     $scope.get_cauhoi = function () {
         if ($scope.id_hien_tai > 0) {
             $scope.btn_prev = true;
-        } else if ($scope.id_hien_tai <= 0) {
+        } else {
             $scope.btn_prev = false;
         }
+        
+        if ($scope.id_hien_tai + 1 === $scope.tong_cau_hoi) {
+            $scope.btn_next = false;
+        } else {
+            $scope.btn_next = true;
+        }        
+
         $scope.fetch_cauhoi().then(function (cauhoi) {
             $scope.tong_cau_hoi = cauhoi.length;
             var data = cauhoi[$scope.id_hien_tai];
@@ -113,6 +134,7 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
             console.log($scope.diem);
         }
     }
+
     $scope.fetch_cauhoi = function () {
         return $http.get(`app/db/Quizs/${$scope.id_monhoc.toUpperCase()}.js`).then(
             function (response) {
@@ -143,7 +165,7 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
         $scope.tien_do = ($scope.id_hien_tai / $scope.tong_cau_hoi) * 100;
     };
 
-
     $scope.reset();
+
 });
 
