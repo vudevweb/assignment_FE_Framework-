@@ -7,9 +7,11 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
 
     $http.get('app/db/Subjects.js').then(
         function (response) {
+
             $scope.ctmonhoc = response.data.find(function (item) {
                 return item.id === $scope.id_monhoc.toUpperCase();
             });
+
             if ($scope.ctmonhoc) {
                 $scope.name_monhoc = $scope.ctmonhoc.name;
             } else {
@@ -29,7 +31,7 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
     $scope.tong_cau_hoi = 0;
     $scope.id_hien_tai = 0;
     $scope.tien_do = 0;
-    $scope.thoi_gian = 300;
+    $scope.thoi_gian = 10;
     $scope.so_cau_dung = 0;
 
     $scope.btn_prev = false;
