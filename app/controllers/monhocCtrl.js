@@ -7,7 +7,6 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
 
     $http.get('app/db/Subjects.js').then(
         function (response) {
-
             $scope.ctmonhoc = response.data.find(function (item) {
                 return item.id === $scope.id_monhoc.toUpperCase();
             });
@@ -54,6 +53,7 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
         $scope.result = false;
         $scope.get_cauhoi();
         $scope.startTimer();
+        $scope.tien_do = ((1 / $scope.tong_cau_hoi) * 100);
     }
 
     $scope.reset = function () {
@@ -67,16 +67,18 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
         if (type == "btn") {
             var confirm_m = $window.confirm('Bạn chắc chắn muốn nộp bài ?');
             if (confirm_m) {
+                $scope.stopTimer();
+                $scope.check_dap_an()
                 $scope.status_start = false;
                 $scope.quiz = false;
                 $scope.result = true;
-                $scope.stopTimer();
             }
         } else if (type == 'het_time') {
+            $scope.stopTimer();
+            $scope.check_dap_an()
             $scope.status_start = false;
             $scope.quiz = false;
             $scope.result = true;
-            $scope.stopTimer();
         }
     };
 
@@ -105,24 +107,29 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
     $scope.get_cauhoi = function () {
         if ($scope.id_hien_tai > 0) {
             $scope.btn_prev = true;
-        } else {
-            $scope.btn_prev = false;
-        }
-        
-        if ($scope.id_hien_tai + 1 === $scope.tong_cau_hoi) {
-            $scope.btn_next = false;
-        } else {
-            $scope.btn_next = true;
-        }        
+        } else { $scope.btn_prev = false; }
 
-        $scope.fetch_cauhoi().then(function (cauhoi) {
-            $scope.tong_cau_hoi = cauhoi.length;
-            var data = cauhoi[$scope.id_hien_tai];
-            $scope.cau_hoi = data.Text;
-            $scope.diem_cau_hoi = data.Marks;
-            $scope.dap_an_dung = data.AnswerId;
-            $scope.dap_an = data.Answers;
-        })
+        if ($scope.id_hien_tai + 1 == $scope.tong_cau_hoi) {
+            $scope.btn_next = false;
+        } else { $scope.btn_next = true; }
+
+        $http.get(`app/db/Quizs/${$scope.id_monhoc.toUpperCase()}.js`).then(
+            function (response) {
+                var data_chvip = response.data.slice(0, 5);;
+                $scope.tong_cau_hoi = data_chvip.length
+                var data = data_chvip[$scope.id_hien_tai];
+                $scope.cau_hoi = data.Text;
+                $scope.diem_cau_hoi = data.Marks;
+                $scope.dap_an_dung = data.AnswerId;
+                $scope.dap_an = data.Answers;
+
+                // console.log(data.Text);
+            },
+            function (error) {
+                alert('Ko lấy được khóa học');
+                console.error(error);
+            }
+        );
     }
 
     $scope.check_dap_an = function () {
@@ -137,29 +144,16 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
         }
     }
 
-    $scope.fetch_cauhoi = function () {
-        return $http.get(`app/db/Quizs/${$scope.id_monhoc.toUpperCase()}.js`).then(
-            function (response) {
-                return response.data;
-            },
-            function (error) {
-                console.error('Get câu hỏi không thành công:', error);
-                alert('Get câu hỏi không thành công!');
-            }
-        );
-    }
-
     $scope.prev = function () {
         if ($scope.id_hien_tai > 0) {
             $scope.check_dap_an();
             $scope.id_hien_tai--;
             $scope.get_cauhoi();
         }
-        $scope.tien_do = ($scope.id_hien_tai / $scope.tong_cau_hoi) * 100;
     };
 
     $scope.next = function () {
-        if ($scope.id_hien_tai < $scope.tong_cau_hoi - 1) {
+        if ($scope.id_hien_tai < $scope.tong_cau_hoi) {
             $scope.check_dap_an();
             $scope.id_hien_tai++;
             $scope.get_cauhoi();

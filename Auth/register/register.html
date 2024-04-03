@@ -24,7 +24,7 @@
 <body>
     <section class="container d-flex flex-column">
         <div class="row align-items-center justify-content-center g-0 min-vh-100">
-            <div class="col-lg-5 col-md-8 py-8 py-xl-0">
+            <div class="col-lg-5 col-md-8 py-3 py-xl-0">
                 <!-- Card -->
                 <div class="card shadow" style="border-radius: 20px  !important; border: none !important;">
                     <!-- Card body -->
@@ -32,12 +32,18 @@
                         <div class="mb-4">
                             <a href="index.html"><img src="../assets/img/logo.svg" class="mb-4 logo_vip"
                                     alt="logo-icon"></a>
-                            <h1 class="mb-1 fw-bold">Đăng nhập</h1>
-                            <span>Bạn không có tài khoản? <a href="register.html" class="ms-1 text-primary">Đăng ký ngay</a></span>
+                            <h1 class="mb-1 fw-bold">Đăng ký</h1>
+                            <span>Bạn đã có tài khoản? <a href="login.html" class="ms-1 text-primary">Đăng nhập ngay</a></span>
                         </div>
                         <!-- Form -->
                         <form>
                             <!-- Username -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Tên của bạn</label>
+                                <input type="email" id="email" class="form-control" name="email"
+                                    placeholder="Nhập email của bạn tại đây" required>
+                            </div>
+                            <!-- email -->
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email của bạn</label>
                                 <input type="email" id="email" class="form-control" name="email"
@@ -49,41 +55,34 @@
                                 <input type="password" id="password" class="form-control" name="password"
                                     placeholder="**************" required>
                             </div>
+                            <!-- Password nhập lại -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Mật khẩu xác nhận</label>
+                                <input type="password" id="password" class="form-control" name="password"
+                                    placeholder="**************" required>
+                            </div>
                             <!-- Checkbox -->
                             <div class="d-lg-flex justify-content-between align-items-center mb-4">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="rememberme">
-                                    <label class="form-check-label " for="rememberme">Nhớ tôi</label>
-                                </div>
-                                <div>
-                                    <a class="text-primary" href="forget-password.html">Quên mật khẩu?</a>
+                                    <input type="checkbox" class="form-check-input" id="agreeCheck">
+                                    <label class="form-check-label" for="agreeCheck">
+                                        <span style="font-size: 14px;"> Tôi đồng ý với
+                                            <a class="text-primary" href="">
+                                                Điều khoản dịch vụ
+                                            </a>
+                                            và
+                                            <a class="text-primary" href="">
+                                                Chính sách quyền riêng tư.
+                                            </a>
+                                        </span>
+                                    </label>
                                 </div>
                             </div>
                             <div>
                                 <!-- Button -->
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary" >Đăng nhập</button>
+                                    <button type="submit" class="btn btn-primary">Đăng ký</button>
                                 </div>
-                            </div>
-                            <hr class="my-4">
-
-                            <div class="mt-4 text-center">
-                                <!--Facebook-->
-                                <a href="#" class="btn-social btn-social-outline btn-facebook">
-                                    <i class="bi bi-facebook fs-4"></i>
-                                </a>
-                                <!--Twitter-->
-                                <a href="#" class="btn-social btn-social-outline btn-twitter">
-                                    <i class="bi bi-twitter fs-4"></i>
-                                </a>
-                                <!--LinkedIn-->
-                                <a href="#" class="btn-social btn-social-outline btn-linkedin">
-                                    <i class="bi bi-linkedin fs-4"></i>
-                                </a>
-                                <!--GitHub-->
-                                <a href="#" class="btn-social btn-social-outline btn-github">
-                                    <i class="bi bi-github fs-4"></i>
-                                </a>
                             </div>
                         </form>
                     </div>

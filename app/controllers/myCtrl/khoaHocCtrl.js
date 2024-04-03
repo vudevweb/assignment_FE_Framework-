@@ -12,7 +12,7 @@ app.controller('khoaHocCtrl', function($scope, $routeParams , $http, $location) 
             });
         },
         function(error) {
-            alert('Error fetching khoahoc');
+            alert('lỗi lấy khóa học');
             console.error(error);
         }
     );
