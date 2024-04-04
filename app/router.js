@@ -12,9 +12,8 @@ app.config(function ($routeProvider) {
         .when("/khoahoc/:id_khoahoc", { templateUrl: "app/page/monhoc.html", controller: 'khoaHocCtrl' })
         .when("/khoahoc/:id_khoahoc/:id_monhoc", { templateUrl: "app/page/ctmonhoc.html", controller: 'monhocCtrl' })
 
-        .when("/khoahoc/:id_khoahoc/:id_monhoc/start", { templateUrl: "app/page/quiz_start.html", controller: 'monhocCtrl' })
         .when("/khoahoc/:id_khoahoc/:id_monhoc/quiz", { templateUrl: "app/page/quiz.html", controller: 'monhocCtrl' })
-        .when("/khoahoc/:id_khoahoc/:id_monhoc/result", { templateUrl: "app/page/quiz_result.html", controller: 'monhocCtrl' })
+        .when("/khoahoc/:id_khoahoc/:id_monhoc/test", { templateUrl: "app/page/quiztest.html", controller: 'monhocTestCtrl' })
 
 });
 

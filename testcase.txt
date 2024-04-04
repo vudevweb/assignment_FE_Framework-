@@ -1,0 +1,25 @@
+chức năng xem đơn hàng 
+Testcase 1: Xem đơn hàng khi không có đơn hàng nào:
+   - Input: Người dùng đã đăng nhập vào tài khoản Tiki nhưng không có đơn hàng nào trong đặt hàng của họ.
+   - Output: Hiển thị thông báo "Chưa có đơn hàng"
+Testcase 2: Xem thông tin đơn hàng với một đơn hàng duy nhất:
+     - Input: Người dùng chọn một đơn hàng cụ thể để xem chi tiết.
+    - Output: Hiển thị thông tin chi tiết của đơn hàng được chọn, bao gồm các mục như sản phẩm, địa chỉ giao hàng, số lượng, giá cả, v.v.
+Testcase 3: Xem đơn hàng với nhiều đơn hàng:
+   - Input: Người dùng đã đặt nhiều đơn hàng trước đó.
+   - Output: Hiển thị danh sách các đơn hàng đã đặt, mỗi đơn hàng đi kèm với thông tin chi tiết.
+Testcase 4: Kiểm tra sắp xếp đơn hàng theo thời gian:
+   - Input: Người dùng đã đặt nhiều đơn hàng với các thời điểm khác nhau.
+   - Output: Các đơn hàng được hiển thị theo thứ tự thời gian từ mới nhất đến cũ nhất hoặc ngược lại.
+Testcase 5: Kiểm tra chức năng lọc đơn hàng:
+   - Input: Người dùng đã đặt nhiều đơn hàng với các loại khác nhau hoặc trạng thái khác nhau (tất cả đơn, chờ thanh toán ,đang xử lý , đang vận chuyển,đã giao, đã hủy).
+   - Output: Chức năng lọc đơn hàng hoạt động chính xác, hiển thị danh sách đơn hàng phù hợp với tiêu chí lựa chọn của người dùng.
+Testcase 6: Kiểm tra tính bảo mật:
+   - Input: Người dùng không được phép xem đơn hàng của người khác.
+   - Output: Hệ thống không hiển thị thông tin đơn hàng của người dùng khác.
+Testcase 7: Xem đơn hàng trên nhiều thiết bị:
+   - Input: Người dùng đăng nhập vào tài khoản Tiki từ nhiều thiết bị khác nhau.
+   - Output: Đơn hàng được đồng bộ và hiển thị đồng nhất trên tất cả các thiết bị.
+Testcase 8: Xem đơn hàng và thay đổi trạng thái đơn hàng:
+   - Input: Người dùng muốn thay đổi trạng thái của một đơn hàng.
+   - Output: Hệ thống cho phép người dùng thực hiện các thao tác như hủy đơn hàng, yêu cầu hoàn trả, hoặc gửi phản hồi.

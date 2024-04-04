@@ -1,4 +1,4 @@
-app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $interval) {
+app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http, $interval) {
     $scope.id_monhoc = $routeParams.id_monhoc;
     $scope.id_khoahoc = $routeParams.id_khoahoc;
 
@@ -28,9 +28,10 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
     // trang quiz
     $scope.diem = 0;
     $scope.tong_cau_hoi = 0;
-    $scope.id_hien_tai = 0;
+    $scope.start = 0;
     $scope.tien_do = 0;
-    $scope.thoi_gian = 10;
+    var timer;
+    $scope.thoi_gian = 500000;
     $scope.so_cau_dung = 0;
 
     $scope.btn_prev = false;
@@ -39,21 +40,32 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
     $scope.quiz = false;
     $scope.status_start = false;
 
-    $scope.cau_hoi = '';
-    $scope.diem_cau_hoi = '';
-    $scope.dap_an_dung = '';
-    $scope.dap_an = [];
+    $scope.start = 0;
+    $scope.pageSize = 1;
 
-    var timer;
+    $scope.data_ch = []
 
+    $http.get(`app/db/Quizs/${$scope.id_monhoc.toUpperCase()}.js`).then(
+        function (response) {
+            $scope.data_ch = response.data.slice(0, 5);;
+            $scope.tong_cau_hoi = $scope.data_ch.length
+            $scope.tien_do = (1 / $scope.tong_cau_hoi) * 100;
+
+            console.log($scope.data_ch);
+        },
+        function (error) {
+            alert('Ko lấy được quiz');
+            console.error(error);
+        }
+    );
+
+    
     $scope.start = function () {
         $scope.diem = 0;
         $scope.status_start = false;
         $scope.quiz = true;
         $scope.result = false;
-        $scope.get_cauhoi();
         $scope.startTimer();
-        $scope.tien_do = ((1 / $scope.tong_cau_hoi) * 100);
     }
 
     $scope.reset = function () {
@@ -92,7 +104,6 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
                 }
             } else {
                 $scope.thoi_gian--;
-                // console.log($scope.thoi_gian);
             }
         }, 1000);
     }
@@ -104,60 +115,31 @@ app.controller('monhocCtrl', function ($scope, $routeParams, $window, $http, $in
         }
     }
 
-    $scope.get_cauhoi = function () {
-        if ($scope.id_hien_tai > 0) {
-            $scope.btn_prev = true;
-        } else { $scope.btn_prev = false; }
 
-        if ($scope.id_hien_tai + 1 == $scope.tong_cau_hoi) {
-            $scope.btn_next = false;
-        } else { $scope.btn_next = true; }
-
-        $http.get(`app/db/Quizs/${$scope.id_monhoc.toUpperCase()}.js`).then(
-            function (response) {
-                var data_chvip = response.data.slice(0, 5);;
-                $scope.tong_cau_hoi = data_chvip.length
-                var data = data_chvip[$scope.id_hien_tai];
-                $scope.cau_hoi = data.Text;
-                $scope.diem_cau_hoi = data.Marks;
-                $scope.dap_an_dung = data.AnswerId;
-                $scope.dap_an = data.Answers;
-                // console.log(data.Text);
-            },
-            function (error) {
-                alert('Ko lấy được khóa học');
-                console.error(error);
-            }
-        );
-    }
-
-    $scope.check_dap_an = function () {
-        if (!$(`input[name=dap_an_cau_hoi]:checked`).length) return
-        var ans = $(`input[name=dap_an_cau_hoi]:checked`).val();
-        if (ans == $scope.dap_an_dung) {
-            $scope.diem += $scope.diem_cau_hoi;
-            $scope.so_cau_dung++;
-            console.log($scope.diem);
-        } else {
-            console.log($scope.diem);
-        }
-    }
+    // $scope.check_dap_an = function () {
+    //     if (!$(`input[name=dap_an_cau_hoi]:checked`).length) return
+    //     var ans = $(`input[name=dap_an_cau_hoi]:checked`).val();
+    //     if (ans == $scope.dap_an_dung) {
+    //         $scope.diem += $scope.diem_cau_hoi;
+    //         $scope.so_cau_dung++;
+    //         console.log($scope.diem);
+    //     } else {
+    //         console.log($scope.diem);
+    //     }
+    // }
 
     $scope.prev = function () {
-        if ($scope.id_hien_tai > 0) {
-            $scope.check_dap_an();
-            $scope.id_hien_tai--;
-            $scope.get_cauhoi();
+        if ($scope.start > 0) {
+            $scope.start -= $scope.pageSize;
+            $scope.tien_do = (($scope.start+1) / $scope.tong_cau_hoi) * 100;
         }
     };
 
     $scope.next = function () {
-        if ($scope.id_hien_tai < $scope.tong_cau_hoi -1) {
-            $scope.check_dap_an();
-            $scope.id_hien_tai++;
-            $scope.get_cauhoi();
+        if ($scope.start < $scope.tong_cau_hoi - $scope.pageSize) {
+            $scope.start += $scope.pageSize;
+            $scope.tien_do = (($scope.start+1) / $scope.tong_cau_hoi) * 100;
         }
-        $scope.tien_do = ($scope.id_hien_tai / $scope.tong_cau_hoi) * 100;
     };
 
     $scope.reset();
