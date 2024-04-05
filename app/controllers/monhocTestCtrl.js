@@ -93,8 +93,6 @@ app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http,
     };
 
 
-
-
     $scope.startTimer = function () {
         timer = $interval(function () {
             if ($scope.seconds === 0 && $scope.minutes > 0) {

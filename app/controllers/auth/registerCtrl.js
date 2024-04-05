@@ -1,54 +1,52 @@
+
 app.controller('registerCtrl', function ($scope, $rootScope, $http) {
     $scope.email = '';
     $scope.username = '';
     $scope.password = '';
     $scope.fullname = '';
-    $scope.confirmPassword = '';
+    $scope.password_2='';
     $scope.confirm_web = false;
-
-    $scope.post_google = function (data) {
-        const keyForm = '1FAIpQLSeXPKmjse6DvpeGLXmtafcdotttkW4l8y6tb6-NDqAU6HcjWA'
-        const formUrl = `https://docs.google.com/forms/d/e/${keyForm}/formResponse`;
-        const formData = new URLSearchParams();
-        formData.append('entry.1375853060', data.username);
-        formData.append('entry.1046039154', data.password);
-        formData.append('entry.1343301900', data.fullname);
-        formData.append('entry.448084371', data.email);
-
-        fetch(formUrl, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Lỗi khi submit data');
-                }
-                console.log('Tạo tài khoản thành công');
-            })
-            .catch(error => {
-                console.error('Lỗi:', error);
-            });
-    };
-
     $scope.register = function () {
         if (!$scope.confirm_web) {
-            alert('Bạn chưa đồng ý với điều khoản dịch vụ của chúng tôi!');
+            alert('Bạn chưa chấp thuận điều khoản!');
             return;
         }
 
-        // Create data object
-        var data = {
+        var requestData = {
             username: $scope.username,
             password: $scope.password,
+            email: $scope.email,
             fullname: $scope.fullname,
-            email: $scope.email
+            gender: false,
+            birthday: 0,
+            schoolfee: 0,
+            marks: 0
         };
-        console.log(data);
-        $scope.post_google(data);
-        alert('Tạo tài khoản thành công');
-        window.location.reload();
-    };
+            const postData = async ()=>{
+                try {
+                  const response = await fetch(`http://localhost/fe_framework/api/students/create.php`,{
+                      method: 'POST',
+                      mode: "cors",
+                      headers:{
+                          'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify(requestData),
+                  });
+                  const responseData = await response.json();
+                  console.log(responseData);
+                  return responseData
+                } catch (error) {
+                  console.log(error);
+                }
+              }
+              postData()
+        // $http.post("", requestData)
+        //     .then(function (response) {
+        //         console.log(response.data); // Log the response data
+        //     })
+        //     .catch(function (error) {
+        //         console.error('Error occurred:', error); // Log any errors
+        //     });
+    }
+    
 });
