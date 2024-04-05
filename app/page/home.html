@@ -74,13 +74,15 @@
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 
-
+<div ng-show="!loginStatus" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+    <strong>Thông báo!</strong> Bạn cần phải đăng nhập để sử dụng
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 <!-- thống kê -->
-<section class="py-6">
+<section class="py-4">
     <div class="container">
         <!-- row -->
         <div class="row">
@@ -143,11 +145,6 @@
     </div>
 </section>
 
-
-<div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-    <strong>Thông báo!</strong> Bạn cần phải đăng nhập để sử dụng
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
 <!-- khóa học-->
 <div class="d-flex justify-content-between align-items-end">
     <div class="d-flex align-items-end">
@@ -157,7 +154,6 @@
     <a class="text-primary" href="khoahoc.html"><span>Xem thêm <i class="bi bi-arrow-right-short"></i></span></a>
 </div>
 <section class="autoplay row mt-3 mb-4">
-
     <div class="col-xl-4 col-lg-6 col-md-6 col-12" ng-repeat="item in khoahoc">
         <div class="card mb-4 card-hover">
             <div class="d-flex justify-content-between align-items-center p-4">

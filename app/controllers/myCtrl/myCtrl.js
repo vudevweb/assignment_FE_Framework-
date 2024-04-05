@@ -1,42 +1,35 @@
-app.controller('myCtrl', function ($scope, $rootScope, $http, $location) {
-    $scope.render_slug = function(title) {
-        var slug;
-        slug = title.toLowerCase();
-        //Đổi ký tự có dấu thành không dấu
-        slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
-        slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
-        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
-        slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
-        slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
-        slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
-        slug = slug.replace(/đ/gi, 'd');
-        //Xóa các ký tự đặt biệt
-        slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
-        //Đổi khoảng trắng thành ký tự gạch ngang
-        slug = slug.replace(/ /gi, "-");
-        //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
-        //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
-        slug = slug.replace(/\-\-\-\-\-/gi, '-');
-        slug = slug.replace(/\-\-\-\-/gi, '-');
-        slug = slug.replace(/\-\-\-/gi, '-');
-        slug = slug.replace(/\-\-/gi, '-');
-        //Xóa các ký tự gạch ngang ở đầu và cuối
-        slug = '@' + slug + '@';
-        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
-
-        return slug;
+app.controller('myCtrl', function ($scope, $rootScope, $http) {
+    // $rootScope.studentsLogin = []
+    if (localStorage.getItem('loginStatus') !== null && localStorage.getItem('loginUser') !== null) {
+        $rootScope.loginStatus = JSON.parse(localStorage.getItem('loginStatus'));
+        $rootScope.loginUser = localStorage.getItem('loginUser');
+        $http.get('https://script.google.com/macros/s/AKfycbzw7jDynEFui86xZR0cFibv15BeVDcpp-Vuw2sWtqnTj4lN8Oka2LyINjTI4yoUVWMD/exec')
+            .then(
+                function(response) {
+                    $rootScope.studentsLogin = response.data;
+                    $rootScope.studentsLogin = $rootScope.studentsLogin.find(function(student) {
+                        return student.email === $rootScope.loginUser;
+                    });
+                    console.log($rootScope.studentsLogin);
+                },
+                function(error) {
+                    alert('lỗi lấy data students');
+                    console.error(error);
+                }
+            );
+    
+    } else {
+        $rootScope.loginStatus = false;
+        $rootScope.loginUser = false;
     }
+    
+    console.log($rootScope.loginUser);
+    console.log($rootScope.loginStatus);
 
-
-    $scope.khoahoc = [];
-    $http.get('app/db/Khoahoc.js').then(
-        function (response) {
-            $scope.khoahoc = response.data;
-            // console.log(response.data);
-        },
-        function (error) {
-            alert('Error fetching khoahoc');
-            console.error(error);
-        }
-    );
+    $scope.logOut = function () {
+        localStorage.setItem('loginStatus', 'false');
+        localStorage.clear();
+        window.location.href = "#!login";
+        window.location.reload();
+    }
 });

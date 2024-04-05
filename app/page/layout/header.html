@@ -32,7 +32,7 @@
 
         </div>
         <div>
-            <li class="dropdown ms-2 d-inline-block position-static">
+            <li ng-show="loginStatus" class="dropdown ms-2 d-inline-block position-static">
                 <a class="rounded-circle" href="#" data-bs-toggle="dropdown" data-bs-display="static"
                     aria-expanded="false">
                     <div class="avatar avatar-md avatar-indicators avatar-online">
@@ -48,8 +48,8 @@
                                     class="rounded-circle">
                             </div>
                             <div class="ms-3 lh-1">
-                                <h5 class="mb-1">Vũ Đỗ</h5>
-                                <p class="mb-0 text-muted">vudo@gmail.com</p>
+                                <h5 class="mb-1">{{studentsLogin.fullname}}</h5>
+                                <p class="mb-0 text-muted">{{loginUser}}</p>
                             </div>
                         </div>
                     </div>
@@ -69,13 +69,17 @@
                     <div class="dropdown-divider"></div>
                     <ul class="list-unstyled">
                         <li>
-                            <a class="dropdown-item" href="../index.html">
+                            <button class="dropdown-item" ng-click="logOut()">
                                 <i class="fe fe-power me-2"></i>Đăng xuất
-                            </a>
+                            </button>
                         </li>
                     </ul>
                 </div>
             </li>
+
+            <div>
+                <a ng-show="!loginStatus" class="btn btn-success" href="#!login">Đăng nhập</a>
+            </div>
         </div>
         <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -83,9 +87,3 @@
         </button>
     </div>
 </nav>
-
-<!-- <div class="fixed-bottom p-2 d-flex justify-content-end" style="bottom: 10%;">
-    <button ng-click="setTheme()" type="button" class="btn btn-primary me-2">
-        <i id="icon_theme" class="bi bi-brightness-high"></i>
-    </button>
-</div> -->
