@@ -24,7 +24,7 @@ app.controller('registerCtrl', function ($scope, $rootScope, $http) {
         };
             const postData = async ()=>{
                 try {
-                  const response = await fetch(`http://localhost/fe_framework/api/students/create.php`,{
+                  const response = await fetch(`https://api.vudevweb.com/api/students/create.php`,{
                       method: 'POST',
                       mode: "cors",
                       headers:{
