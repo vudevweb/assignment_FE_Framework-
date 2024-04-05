@@ -9,10 +9,10 @@ app.controller('registerCtrl', function ($scope, $rootScope, $http) {
     $scope.post_google = function (data) {
         const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfjK3fnVikH1sBxcD6_2MXENj-HKd3taRmMT_idmLmYBLfsyw/formResponse';
         const formData = new URLSearchParams();
-        formData.append('entry.223430498', data.username);
-        formData.append('entry.1560624705', data.password);
-        formData.append('entry.489835573', data.fullname);
-        formData.append('entry.152855537', data.email);
+        formData.append('entry.299610788', data.username);
+        formData.append('entry.586450425', data.password);
+        formData.append('entry.39357315', data.fullname);
+        formData.append('entry.260274691', data.email);
 
         fetch(formUrl, {
             method: 'POST',
