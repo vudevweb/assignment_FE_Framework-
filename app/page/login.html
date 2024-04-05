@@ -1,5 +1,14 @@
+<style>
+    nav {
+        display: none !important;
+    }
+
+    footer {
+        display: none !important;
+    }
+</style>
 <section class="container d-flex flex-column">
-    <div class="row justify-content-center g-0 min-vh-100">
+    <div class="row justify-content-center align-items-center g-0 min-vh-100">
         <div class="col-lg-5 col-md-8 py-8 py-xl-0">
             <div class="card shadow" style="border-radius: 20px !important; border: none !important">
                 <div class="card-body p-6" style="padding: 2.5rem">
@@ -8,20 +17,21 @@
                                 alt="logo-icon" /></a>
                         <h1 class="mb-1 fw-bold">Đăng nhập</h1>
                         <span>Bạn không có tài khoản?
-                            <a href="register.html" class="ms-1 text-primary">Đăng ký ngay</a></span>
+                            <a href="#!register" class="ms-1 text-primary">Đăng ký ngay</a></span>
                     </div>
 
                     <form name="loginForm" ng-submit="loginForm.$valid && login()">
-                        <!-- Username -->
+                        <!-- username -->
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email của bạn</label>
-                            <input ng-model="email" type="email" id="email" name="email" class="form-control"
-                                placeholder="Nhập email của bạn tại đây" required/>
-                            <div class="text-danger" ng-show="loginForm.email.$dirty && loginForm.email.$invalid">
-                                <span ng-show="loginForm.email.$error.required">Email là bắt buộc</span>
-                                <span ng-show="loginForm.email.$error.email">Email không hợp lệ</span>
+                            <label for="username" class="form-label">Username của bạn</label>
+                            <input ng-model="username" type="text" id="username" name="username" class="form-control"
+                                placeholder="Nhập tên người dùng của bạn tại đây" required ng-pattern="/^[a-zA-Z0-9]*$/" />
+                            <div class="text-danger" ng-show="loginForm.username.$dirty && loginForm.username.$invalid">
+                                <span ng-show="loginForm.username.$error.required">Username là bắt buộc</span>
+                                <span ng-show="loginForm.username.$error.pattern">Tên không hợp lệ. Chỉ chấp nhận ký tự chữ và số</span>
                             </div>
                         </div>
+                        
                         <!-- Password -->
                         <div class="mb-3">
                             <label for="password" class="form-label">Mật khẩu</label>

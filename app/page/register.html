@@ -1,136 +1,112 @@
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<style>
+    nav {
+        display: none !important;
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/custom/style.css">
-    <link rel="stylesheet" href="../assets/custom/base.css">
-    <link rel="stylesheet" href="../assets/custom/custom.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="shortcut icon" href="../assets/img/logo.svg" type="image/x-icon">
-    <title>EASY QUIZ</title>
-    <style>
-        body {
-            background-color: #f7f8f9;
-        }
-        .card  {
-            background-color: white;
-        }
-    </style>
-</head>
+    footer {
+        display: none !important;
+    }
+</style>
 
-<body>
-    <section class="container d-flex flex-column">
-        <div class="row align-items-center justify-content-center g-0 min-vh-100">
-            <div class="col-lg-5 col-md-8 py-3 py-xl-0">
-                <!-- Card -->
-                <div class="card shadow" style="border-radius: 20px  !important; border: none !important;">
-                    <!-- Card body -->
-                    <div class="card-body p-6" style="padding: 2.5rem;">
-                        <div class="mb-4">
-                            <a href="index.html"><img src="../assets/img/logo.svg" class="mb-4 logo_vip"
-                                    alt="logo-icon"></a>
-                            <h1 class="mb-1 fw-bold">Đăng ký</h1>
-                            <span>Bạn đã có tài khoản? <a href="login.html" class="ms-1 text-primary">Đăng nhập ngay</a></span>
-                        </div>
-                        <!-- Form -->
-                        <form>
-                            <!-- Username -->
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Tên của bạn</label>
-                                <input type="email" id="email" class="form-control" name="email"
-                                    placeholder="Nhập email của bạn tại đây" required>
-                            </div>
-                            <!-- email -->
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email của bạn</label>
-                                <input type="email" id="email" class="form-control" name="email"
-                                    placeholder="Nhập email của bạn tại đây" required>
-                            </div>
-                            <!-- Password -->
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Mật khẩu</label>
-                                <input type="password" id="password" class="form-control" name="password"
-                                    placeholder="**************" required>
-                            </div>
-                            <!-- Password nhập lại -->
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Mật khẩu xác nhận</label>
-                                <input type="password" id="password" class="form-control" name="password"
-                                    placeholder="**************" required>
-                            </div>
-                            <!-- Checkbox -->
-                            <div class="d-lg-flex justify-content-between align-items-center mb-4">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="agreeCheck">
-                                    <label class="form-check-label" for="agreeCheck">
-                                        <span style="font-size: 14px;"> Tôi đồng ý với
-                                            <a class="text-primary" href="">
-                                                Điều khoản dịch vụ
-                                            </a>
-                                            và
-                                            <a class="text-primary" href="">
-                                                Chính sách quyền riêng tư.
-                                            </a>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div>
-                                <!-- Button -->
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary">Đăng ký</button>
-                                </div>
-                            </div>
-                        </form>
+<section class="container d-flex flex-column">
+    <div class="row align-items-center justify-content-center g-0 min-vh-100">
+        <div class="col-lg-5 col-md-8 py-3 py-xl-0">
+            <!-- Card -->
+            <div class="card shadow" style="border-radius: 20px; border: none;">
+                <!-- Card body -->
+                <div class="card-body p-6" style="padding: 2.5rem;">
+                    <div class="mb-4">
+                        <h1 class="mb-1 fw-bold">Đăng ký</h1>
+                        <span>Bạn đã có tài khoản? <a href="#!login" class="ms-1 text-primary">Đăng nhập
+                                ngay</a></span>
                     </div>
+                    <!-- Form -->
+                    <form name="registerForm" ng-submit="registerForm.$valid && register()">
+                        <!-- tên -->
+                        <div class="mb-3">
+                            <label for="fullname" class="form-label">Họ & tên</label>
+                            <input ng-model="fullname" type="text" id="fullname" class="form-control" name="fullname"
+                                placeholder="Nhập fullname của bạn tại đây" required >
+                            <div class="text-danger" ng-show="registerForm.fullname.$dirty && registerForm.fullname.$invalid">
+                                <span ng-show="registerForm.fullname.$error.required">Họ & tên là bắt buộc</span>
+                            </div>
+                        </div>
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input ng-model="email" type="email" id="email" class="form-control" name="email"
+                                placeholder="Nhập email của bạn tại đây" required>
+                            <div class="text-danger" ng-show="registerForm.email.$dirty && registerForm.email.$invalid">
+                                <span ng-show="registerForm.email.$error.required">Email là bắt buộc</span>
+                                <span ng-show="registerForm.email.$error.email">Email không hợp lệ</span>
+                            </div>
+                        </div>
+
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Tên đăng nhập</label>
+                            <input ng-model="username" type="text" id="username" name="username" class="form-control"
+                                placeholder="Nhập tên đăng nhập" required ng-pattern="/^[a-zA-Z0-9]*$/" />
+                            <div class="text-danger"
+                                ng-show="registerForm.username.$dirty && registerForm.username.$invalid">
+                                <span ng-show="registerForm.username.$error.required">Tên đăng nhập là bắt buộc</span>
+                                <span ng-show="registerForm.username.$error.pattern">Chỉ
+                                    chấp nhận ký tự chữ và số</span>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mật khẩu</label>
+                            <input ng-model="password" type="password" id="password" class="form-control"
+                                name="password" placeholder="**************" required minlength="4">
+                            <div class="text-danger"
+                                ng-show="registerForm.password.$dirty && registerForm.password.$invalid">
+                                <span ng-show="registerForm.password.$error.required">Mật khẩu là bắt buộc</span>
+                                <span ng-show="registerForm.password.$error.minlength">Mật khẩu quá ngắn</span>
+                            </div>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Mật khẩu xác nhận</label>
+                            <input ng-model="confirmPassword" type="password" id="confirmPassword" class="form-control"
+                                name="confirmPassword" placeholder="**************" required minlength="4"
+                                ng-pattern="password">
+                            <div class="text-danger"
+                                ng-show="registerForm.confirmPassword.$dirty && registerForm.confirmPassword.$invalid">
+                                <span ng-show="registerForm.confirmPassword.$error.required">Mật khẩu là bắt buộc</span>
+                                <span ng-show="registerForm.confirmPassword.$error.minlength">Mật khẩu quá ngắn</span>
+                                <span ng-show="registerForm.confirmPassword.$error.pattern">Mật khẩu nhập lại không
+                                    chính xác</span>
+                            </div>
+                        </div>
+
+                        <!-- Checkbox -->
+                        <div class="d-lg-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input ng-model="confirm_web" type="checkbox" class="form-check-input" id="agreeCheck">
+                                <label class="form-check-label" for="agreeCheck">
+                                    <span style="font-size: 14px;"> Tôi đồng ý với
+                                        <a class="text-primary" href="">
+                                            Điều khoản dịch vụ
+                                        </a>
+                                        và
+                                        <a class="text-primary" href="">
+                                            Chính sách quyền riêng tư.
+                                        </a>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Đăng ký</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-</body>
-
-
-    <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <img src="../assets/img/logo.svg" class="rounded me-2 logo_vip" alt="...">
-                <strong class="me-auto">Bootstrap</strong>
-                <small>1 giây trước</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                <!-- Nội dung thông báo sẽ được thay đổi tại đây -->
-            </div>
-        </div>
     </div>
-
-    <script src="../assets/angulerJS/angular.min.js"></script>
-    <script src="../assets/jquery/jquery-3.5.1.slim.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/custom/toast.js"></script>
-
-    <script>
-        const app = angular.module('loginApp', []);
-        app.controller('loginCtrl', ($scope) => {
-            $scope.email = '';
-            $scope.password = '';
-
-            $scope.login = () => {
-                if ($scope.email === 'vudoidol354@gmail.com') {
-                    if ($scope.password === '123') {
-                        onToast('Đăng nhập thành công', 'success')
-                    } else {
-                        onToast('Sai mật khẩu', 'danger')
-                    }
-                } else {
-                    onToast('Sai email', 'danger')
-                }
-            };
-        });
-    </script>
-</body>
-
-</html>
+</section>
