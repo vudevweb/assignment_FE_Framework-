@@ -50,18 +50,23 @@
                     <form class="row g-3" id="infoForm" name="infoForm" ng-submit="infoForm.$valid && updateInfo()">
                         <div class="col-md-6">
                             <label for="inputName" class="form-label">Họ & tên</label>
-                            <input ng-model="studentsLogin.fullname" name="inputName" type="text" class="form-control" id="inputName" ng-required="true" ng-minlength="3" ng-maxlength="50">
-                            <div class="text-danger" ng-show="infoForm.inputName.$dirty && infoForm.inputName.$error.required">
+                            <input ng-model="studentsLogin.fullname" name="inputName" type="text" class="form-control"
+                                id="inputName" ng-required="true" ng-minlength="3" ng-maxlength="50">
+                            <div class="text-danger"
+                                ng-show="infoForm.inputName.$dirty && infoForm.inputName.$error.required">
                                 Họ & tên là bắt buộc
                             </div>
-                            <div class="text-danger" ng-show="infoForm.inputName.$error.minlength || infoForm.inputName.$error.maxlength">
+                            <div class="text-danger"
+                                ng-show="infoForm.inputName.$error.minlength || infoForm.inputName.$error.maxlength">
                                 Họ & tên phải có từ 3 đến 50 ký tự
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label for="inputEmail" class="form-label">Email</label>
-                            <input ng-model="studentsLogin.email" value="{{}}" type="email" class="form-control" id="inputEmail" name="inputEmail" ng-required="true">
-                            <div class="text-danger" ng-show="infoForm.inputEmail.$dirty && infoForm.inputEmail.$error.required">
+                            <input ng-model="studentsLogin.email" value="{{}}" type="email" class="form-control"
+                                id="inputEmail" name="inputEmail" ng-required="true">
+                            <div class="text-danger"
+                                ng-show="infoForm.inputEmail.$dirty && infoForm.inputEmail.$error.required">
                                 Email là bắt buộc
                             </div>
                             <div class="text-danger" ng-show="infoForm.inputEmail.$error.email">
@@ -72,30 +77,51 @@
                             <button type="submit" class="btn btn-primary">Lưu</button>
                         </div>
                     </form>
-                    
+
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 <div class="card card-my_edit p-4 px-5" style="border: 0 !important;">
-                    <form class="">
+                    <form name="passForm" ng-submit="passForm.$valid && updatePass()">
                         <div class="mb-3">
-                            <label for="inputName" class="form-label">Mật khẩu cũ</label>
-                            <input placeholder="******************" value="" type="password" class="form-control"
-                                id="inputName">
+                            <label for="passOld" class="form-label">Mật khẩu cũ</label>
+                            <input placeholder="******************" type="password" name="passOld" class="form-control" id="passOld" required minlength="4">
+                            <div class="text-danger" ng-show="passForm.passOld.$dirty && passForm.passOld.$invalid">
+                                <span ng-show="passForm.passOld.$error.required">Mật khẩu là bắt buộc</span>
+                                <span ng-show="passForm.passOld.$error.minlength">Mật khẩu quá ngắn</span>
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Mật khẩu mới</label>
-                            <input placeholder="******************" value="" type="password" class="form-control" id="">
+                            <label for="newPass" class="form-label">Mật khẩu mới</label>
+                            <input placeholder="******************" type="password" name="newPass" ng-model="newPass" class="form-control" id="newPass" required minlength="4">
+                            <div class="text-danger" ng-show="passForm.newPass.$dirty && passForm.newPass.$error.required">
+                                Mật khẩu mới là bắt buộc
+                            </div>
+                            <div class="text-danger" ng-show="passForm.newPass.$dirty && passForm.newPass.$error.minlength">
+                                Mật khẩu mới quá ngắn
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Xác nhận mật khẩu mới</label>
-                            <input placeholder="******************" value="" type="password" class="form-control" id="">
+                            <label for="confirmPass" class="form-label">Xác nhận mật khẩu mới</label>
+                            <input placeholder="******************" type="password" name="confirmPass" ng-model="confirmPass" class="form-control" id="confirmPass" required minlength="4" ng-pattern="newPass">
+                            <div class="text-danger" ng-show="passForm.confirmPass.$dirty && passForm.confirmPass.$invalid">
+                                <span class="text-danger" ng-show="passForm.confirmPass.$error.required">
+                                    Xác nhận mật khẩu mới là bắt buộc
+                                </span>
+                                <span class="text-danger" ng-show="passForm.confirmPass.$error.minlength">
+                                    Mật khẩu quá ngắn
+                                </span>
+                                <span class="text-danger" ng-show="passForm.confirmPass.$error.pattern">
+                                    Xác nhận mật khẩu mới không khớp
+                                </span>
+                            </div>
+                            
                         </div>
                         <div class="col-12 d-grid mt-5">
-                            <button onclick="onToast('Đang phát triển','warning')" type="button"
-                                class="btn btn-primary">Lưu</button>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
                         </div>
                     </form>
+                    
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
