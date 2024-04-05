@@ -7,13 +7,13 @@ app.controller('registerCtrl', function ($scope, $rootScope, $http) {
     $scope.confirm_web = false;
 
     $scope.post_google = function (data) {
-        const keyForm = '1FAIpQLScavrqfbI0QpRRvRboPgrAwO4ILAE5L43dIo_ze4MVQef0J6g'
-        const formUrl = `https://docs.google.com/forms/u/0/d/e/${keyForm}/formResponse`;
+        const keyForm = '1FAIpQLSeXPKmjse6DvpeGLXmtafcdotttkW4l8y6tb6-NDqAU6HcjWA'
+        const formUrl = `https://docs.google.com/forms/d/e/${keyForm}/formResponse`;
         const formData = new URLSearchParams();
-        formData.append('entry.299610788', data.username);
-        formData.append('entry.586450425', data.password);
-        formData.append('entry.39357315', data.fullname);
-        formData.append('entry.260274691', data.email);
+        formData.append('entry.1375853060', data.username);
+        formData.append('entry.1046039154', data.password);
+        formData.append('entry.1343301900', data.fullname);
+        formData.append('entry.448084371', data.email);
 
         fetch(formUrl, {
             method: 'POST',
