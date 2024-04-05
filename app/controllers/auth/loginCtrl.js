@@ -3,7 +3,7 @@ app.controller('loginCtrl', function($scope, $rootScope, $http) {
     $scope.password = '';
     $scope.rememberMe = false;
 
-    $http.get('https://api.vudevweb.com/api/students/read.php')
+    $http.get('http://localhost/fe_framework/api/students/read.php')
         .then(
             function(response) {
                 $scope.students = response.data.students;
