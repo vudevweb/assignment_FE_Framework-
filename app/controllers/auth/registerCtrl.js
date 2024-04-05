@@ -48,5 +48,6 @@ app.controller('registerCtrl', function ($scope, $rootScope, $http) {
         console.log(data);
         $scope.post_google(data);
         alert('Tạo tài khoản thành công');
+        window.location.reload();
     };
 });
