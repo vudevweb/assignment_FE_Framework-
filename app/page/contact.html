@@ -63,54 +63,68 @@
     <div class="col-lg-6 d-lg-flex align-items-center w-lg-50 min-vh-lg-100 position-fixed-lg bg-cover top-0 right-0">
         <div class="px-4 px-xl-10 py-8 py-lg-0">
             <div id="form">
-                <form class="row">
+                <form class="row" id="contactForm" name="contactForm" ng-submit="contactForm.$valid && contact()">
                     <div class="mb-3 col-12 col-md-6">
                         <label class="form-label" for="lname">Họ:<span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="last name" id="lname" placeholder="Họ của bạn"
-                            required="">
-                    </div>
-
-                    <div class="mb-3 col-12 col-md-6">
-                        <label class="form-label" for="fname">Tên:<span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="last name" id="fname" placeholder="Tên của bạn"
-                            required="">
-                    </div>
-
-                    <div class="mb-3 col-12 col-md-6">
-                        <label class="form-label" for="email">Email:<span class="text-danger">*</span></label>
-                        <input class="form-control" type="email" name="email" id="email" placeholder="Email của bạn"
-                            required="">
-                    </div>
-                    <div class="mb-3 col-12 col-md-6">
-                        <label class="form-label" for="phone">Số điện thoại:<span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="phone" id="phone"
-                            placeholder="Số điện thoại của bạn" required="">
-                    </div>
-                    <div class="mb-3 col-12">
-                        <label class=" form-label" for="frustration">Lý do liên hệ:<span
-                                class="text-danger">*</span></label>
-                        <div style="width: 100%;">
-                            <select class="form-select">
-                                <option selected="">Lựa chọn</option>
-                                <option value="1">Thiết kế</option>
-                                <option value="2">Phát triễn</option>
-                                <option value="2">Khóa học</option>
-                                <option value="3">Khác</option>
-                            </select>
+                        <input class="form-control" type="text" name="lastname" id="lname" placeholder="Họ của bạn" ng-model="lastname" required>
+                        <div class="text-danger" ng-show="contactForm.lastname.$error.required && contactForm.lastname.$dirty">
+                            Họ là trường bắt buộc.
                         </div>
                     </div>
-                    <!-- form group -->
-                    <div class="mb-3 col-12">
-                        <label class=" form-label" for="messages">Lời nhắn:</label>
-                        <textarea class="form-control" id="messages" rows="5" placeholder="Lời nhắn của bạn"></textarea>
+                
+                    <div class="mb-3 col-12 col-md-6">
+                        <label class="form-label" for="fname">Tên:<span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" name="firstname" id="fname" placeholder="Tên của bạn" ng-model="firstname" required>
+                        <div class="text-danger" ng-show="contactForm.firstname.$error.required && contactForm.firstname.$dirty">
+                            Tên là trường bắt buộc.
+                        </div>
                     </div>
-                    <!-- button -->
+                
+                    <div class="mb-3 col-12 col-md-6">
+                        <label class="form-label" for="email">Email:<span class="text-danger">*</span></label>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="Email của bạn" ng-model="email" required>
+                        <div class="text-danger" ng-show="contactForm.email.$error.required && contactForm.email.$dirty">
+                            Email là trường bắt buộc.
+                        </div>
+                        <div class="text-danger" ng-show="contactForm.email.$error.email && contactForm.email.$dirty">
+                            Email không hợp lệ.
+                        </div>
+                    </div>
+                
+                    <div class="mb-3 col-12 col-md-6">
+                        <label class="form-label" for="phone">Số điện thoại:<span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" name="phone" id="phone" placeholder="Số điện thoại của bạn" ng-model="phone" required>
+                        <div class="text-danger" ng-show="contactForm.phone.$error.required && contactForm.phone.$dirty">
+                            Số điện thoại là trường bắt buộc.
+                        </div>
+                    </div>
+                
+                    <div class="mb-3 col-12">
+                        <label class="form-label" for="frustration">Lý do liên hệ:<span class="text-danger">*</span></label>
+                        <div style="width: 100%;">
+                            <select class="form-select" ng-model="reason" required>
+                                <option value="" selected disabled>Lựa chọn</option>
+                                <option value="1">Thiết kế</option>
+                                <option value="2">Phát triển</option>
+                                <option value="3">Khóa học</option>
+                                <option value="4">Khác</option>
+                            </select>
+                            <div class="text-danger" ng-show="contactForm.reason.$error.required && contactForm.reason.$dirty">
+                                Lý do liên hệ là trường bắt buộc.
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="mb-3 col-12">
+                        <label class="form-label" for="messages">Lời nhắn:</label>
+                        <textarea class="form-control" id="messages" rows="5" placeholder="Lời nhắn của bạn" ng-model="message"></textarea>
+                    </div>
+                
                     <div class="col-12 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary">
-                            Gửi
-                        </button>
+                        <button type="submit" class="btn btn-primary">Gửi</button>
                     </div>
                 </form>
+                
             </div>
         </div>
     </div>

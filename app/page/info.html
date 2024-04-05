@@ -47,40 +47,32 @@
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <div class="card card-my_edit p-4 px-5" style="border: 0 !important;">
-                    <form class="row g-3">
+                    <form class="row g-3" id="infoForm" name="infoForm" ng-submit="infoForm.$valid && updateInfo()">
                         <div class="col-md-6">
                             <label for="inputName" class="form-label">Họ & tên</label>
-                            <input value="Vũ Đỗ" type="text" class="form-control" id="inputName">
+                            <input ng-model="studentsLogin.fullname" name="inputName" type="text" class="form-control" id="inputName" ng-required="true" ng-minlength="3" ng-maxlength="50">
+                            <div class="text-danger" ng-show="infoForm.inputName.$dirty && infoForm.inputName.$error.required">
+                                Họ & tên là bắt buộc
+                            </div>
+                            <div class="text-danger" ng-show="infoForm.inputName.$error.minlength || infoForm.inputName.$error.maxlength">
+                                Họ & tên phải có từ 3 đến 50 ký tự
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="" class="form-label">Email</label>
-                            <input value="vudevweb@gmail.com" type="email" class="form-control" id="">
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddress" class="form-label">Địa chỉ</label>
-                            <input value="Đà Nẵng" type="text" class="form-control" id="inputAddress" placeholder="">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputCity" class="form-label">Số điện thoại</label>
-                            <input value="0779440918" type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="inputState" class="form-label">Giới tính</label>
-                            <select id="inputState" class="form-select">
-                                <option>Chọn...</option>
-                                <option selected>Nam</option>
-                                <option>Nữ</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="inputYear" class="form-label">Năm sinh</label>
-                            <input value="2004" type="number" class="form-control" id="inputYear">
+                            <label for="inputEmail" class="form-label">Email</label>
+                            <input ng-model="studentsLogin.email" value="{{}}" type="email" class="form-control" id="inputEmail" name="inputEmail" ng-required="true">
+                            <div class="text-danger" ng-show="infoForm.inputEmail.$dirty && infoForm.inputEmail.$error.required">
+                                Email là bắt buộc
+                            </div>
+                            <div class="text-danger" ng-show="infoForm.inputEmail.$error.email">
+                                Email không hợp lệ
+                            </div>
                         </div>
                         <div class="col-12 d-grid mt-5">
-                            <button onclick="onToast('Đang phát triển','warning')" type="button"
-                                class="btn btn-primary">Lưu</button>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
                         </div>
                     </form>
+                    
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">

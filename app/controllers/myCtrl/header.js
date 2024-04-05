@@ -1,5 +1,5 @@
 
-        app.controller('headerCtrl', ($scope) => {
+        app.controller('headerCtrl', ($scope, $rootScope) => {
             let htmlElement = document.documentElement;
             let theme_web = localStorage.getItem('theme') || 'light';
             htmlElement.setAttribute('data-bs-theme', theme_web);

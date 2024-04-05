@@ -22,10 +22,12 @@ app.controller('loginCtrl', function($scope, $rootScope, $http) {
             localStorage.setItem('loginUser', student.username);
             localStorage.setItem('loginStatus', true);
             $rootScope.studentsLogin = student;
-            window.location.href = "#!home";
+            // console.log($rootScope.studentsLogin);
+            window.location.href = "#!home"; 
         } else {
             alert('Đăng nhập thất bại');
         }
     };
+    
 });
 

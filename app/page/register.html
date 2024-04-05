@@ -26,9 +26,13 @@
                         <div class="mb-3">
                             <label for="fullname" class="form-label">Họ & tên</label>
                             <input ng-model="fullname" type="text" id="fullname" class="form-control" name="fullname"
-                                placeholder="Nhập fullname của bạn tại đây" required >
-                            <div class="text-danger" ng-show="registerForm.fullname.$dirty && registerForm.fullname.$invalid">
+                                placeholder="Nhập fullname của bạn tại đây" required ng-minlength="3" ng-maxlength="50">
+                            <div class="text-danger"
+                                ng-show="registerForm.fullname.$dirty && registerForm.fullname.$invalid">
                                 <span ng-show="registerForm.fullname.$error.required">Họ & tên là bắt buộc</span>
+                                <div class="text-danger" ng-show="registerForm.fullname.$error.minlength || registerForm.fullname.$error.maxlength">
+                                    Họ & tên phải có từ 3 đến 50 ký tự
+                                </div>
                             </div>
                         </div>
                         <!-- Email -->
