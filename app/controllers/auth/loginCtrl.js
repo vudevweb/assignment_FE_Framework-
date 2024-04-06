@@ -7,7 +7,7 @@ app.controller('loginCtrl', function($scope, $rootScope, $http) {
         .then(
             function(response) {
                 $scope.students = response.data.students;
-                console.log($scope.students);
+                // console.log($scope.students);
             },
             function(error) {
                 alert('Lỗi lấy students');
@@ -19,8 +19,8 @@ app.controller('loginCtrl', function($scope, $rootScope, $http) {
         const student = $scope.students.find(s => s.username === $scope.username);
         if (student && student.password == $scope.password) {
             alert('Đăng nhập thành công');
-            localStorage.setItem('loginUser', student.id);
-            localStorage.setItem('loginStatus', true);
+            sessionStorage.setItem('loginUser', student.id);
+            sessionStorage.setItem('loginStatus', true);
             $rootScope.studentsLogin = student;
             window.location.href = "#!home"; 
         } else {

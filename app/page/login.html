@@ -35,11 +35,11 @@
                         <!-- Password -->
                         <div class="mb-3">
                             <label for="password" class="form-label">Mật khẩu</label>
-                            <input ng-model="password_2" type="password" id="password" name="password"
+                            <input ng-model="password" type="password" id="password" name="password"
                                 class="form-control" placeholder="**************" minlength="4" required/>
-                            <div class="text-danger" ng-show="loginForm.password_2.$dirty && loginForm.password_2.$invalid">
-                                <span ng-show="loginForm.password_2.$error.required">Mật khẩu là bắt buộc</span>
-                                <span ng-show="loginForm.password_2.$error.minlength">Mật khẩu quá ngắn</span>
+                            <div class="text-danger" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">
+                                <span ng-show="loginForm.password.$error.required">Mật khẩu là bắt buộc</span>
+                                <span ng-show="loginForm.password.$error.minlength">Mật khẩu quá ngắn</span>
                             </div>
                         </div>
                         <!-- Checkbox -->

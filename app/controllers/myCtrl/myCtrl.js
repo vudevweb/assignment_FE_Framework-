@@ -1,17 +1,14 @@
 app.controller('myCtrl', function ($scope, $rootScope, $http) {
 
     $scope.checkLogin = function () {
-        if (localStorage.getItem('loginStatus') != 'false' && localStorage.getItem('loginUser') !== null) {
-            $rootScope.loginStatus = JSON.parse(localStorage.getItem('loginStatus'));
-            $rootScope.loginUser = localStorage.getItem('loginUser');
-            $http.get('https://api.vudevweb.com/api/students/read.php')
+        if (sessionStorage.getItem('loginStatus') != false && sessionStorage.getItem('loginUser') != null) {
+            $rootScope.loginStatus = JSON.parse(sessionStorage.getItem('loginStatus'));
+            $rootScope.loginID = sessionStorage.getItem('loginUser');
+            $http.get('http://localhost/fe_framework/api/students/find.php?id_students='+ $rootScope.loginID)
                 .then(
                     function(response) {
-                        $rootScope.studentsLogin = response.data.students;
-                        $rootScope.studentsLogin = $rootScope.studentsLogin.find(function(student) {
-                            return student.id === $rootScope.loginUser;
-                        });
-                        console.log($rootScope.studentsLogin);
+                        $rootScope.studentsLogin = response.data;
+                        // console.log($rootScope.studentsLogin);
                     },
                     function(error) {
                         alert('lỗi lấy data students');
@@ -21,18 +18,18 @@ app.controller('myCtrl', function ($scope, $rootScope, $http) {
         
         } else {
             $rootScope.loginStatus = false;
-            $rootScope.loginUser = false;
+            $rootScope.loginID = null;
         }
     }
 
     $scope.checkLogin();
     
-    console.log($rootScope.loginUser);
+    console.log($rootScope.loginID);
     console.log($rootScope.loginStatus);
 
     $scope.logOut = function () {
-        localStorage.setItem('loginStatus', 'false');
-        localStorage.clear();
+        sessionStorage.setItem('loginStatus', false);
+        sessionStorage.clear();
         window.location.href = "#!login";
         window.location.reload();
     }

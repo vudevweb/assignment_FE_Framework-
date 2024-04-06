@@ -2,7 +2,7 @@ app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http,
     $scope.id_monhoc = $routeParams.id_monhoc;
     $scope.id_khoahoc = $routeParams.id_khoahoc;
 
-    $scope.ctmonhoc = {};
+    $scope.ctmonhoc = [];
     $scope.name_monhoc = '';
 
     $http.get('app/db/Subjects.js').then(
@@ -10,12 +10,8 @@ app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http,
             $scope.ctmonhoc = response.data.find(function (item) {
                 return item.id === $scope.id_monhoc.toUpperCase();
             });
-
-            if ($scope.ctmonhoc) {
-                $scope.name_monhoc = $scope.ctmonhoc.name;
-            } else {
-                console.error('Subject not found');
-            }
+            $scope.name_monhoc = $scope.ctmonhoc.name;
+            // console.log($scope.ctmonhoc);
         },
         function (error) {
             console.error('Lấy data môn học thất bại:', error);
@@ -36,7 +32,7 @@ app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http,
     $scope.result = false;
     $scope.quiz = false;
     $scope.status_start = false;
-    $scope.cau_hien_tai=0;
+    $scope.cau_hien_tai = 0;
 
     $scope.data_ch = [];
     $scope.tong_cau_hoi = 15;
@@ -44,7 +40,7 @@ app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http,
     $scope.minutes = 15;
     $scope.seconds = 10;
 
-    
+
     $http.get(`app/db/Quizs/${$scope.id_monhoc.toUpperCase()}.js`).then(
         function (response) {
             $scope.data_ch = response.data.slice(0, $scope.tong_cau_hoi);
@@ -78,7 +74,7 @@ app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http,
             var confirm_m = $window.confirm('Bạn chắc chắn muốn nộp bài ?');
             if (confirm_m) {
                 $scope.stopTimer();
-                $scope.check_dap_an(); 
+                $scope.check_dap_an();
                 $scope.status_start = false;
                 $scope.quiz = false;
                 $scope.result = true;
@@ -118,32 +114,32 @@ app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http,
     };
 
     $scope.check_dap_an = function () {
-            $scope.so_cau_dung = 0;
-            var test = $('input[type="radio"]:checked');
-            test.each(function () {
-                if (this.value === this.id) {
-                    $scope.so_cau_dung++;
-                    $scope.diem = $scope.so_cau_dung * ((1 / $scope.tong_cau_hoi) * 100);
-                    $scope.diem = $scope.diem.toFixed(2)
-                    console.log($scope.diem);
-                } else {
-                    console.log($scope.diem);
-                }
-            })  
+        $scope.so_cau_dung = 0;
+        var test = $('input[type="radio"]:checked');
+        test.each(function () {
+            if (this.value === this.name) {
+                $scope.so_cau_dung++;
+                $scope.diem = $scope.so_cau_dung * ((1 / $scope.tong_cau_hoi) * 100);
+                $scope.diem = $scope.diem.toFixed(2)
+                console.log($scope.diem);
+            } else {
+                console.log($scope.diem);
+            }
+        })
     };
-    
-    
+
+
     $scope.prev = function () {
-        if($scope.cau_hien_tai>0) {
-            $scope.cau_hien_tai --;
-            $scope.tien_do -= (($scope.cau_hien_tai + 1) / $scope.tong_cau_hoi) *100;
+        if ($scope.cau_hien_tai > 0) {
+            $scope.cau_hien_tai--;
+            $scope.tien_do -= (($scope.cau_hien_tai + 1) / $scope.tong_cau_hoi) * 100;
         }
     };
 
     $scope.next = function () {
-        if( $scope.cau_hien_tai < $scope.tong_cau_hoi - 1) {
-            $scope.cau_hien_tai ++;
-            $scope.tien_do = (($scope.cau_hien_tai + 1) / $scope.tong_cau_hoi) *100;
+        if ($scope.cau_hien_tai < $scope.tong_cau_hoi - 1) {
+            $scope.cau_hien_tai++;
+            $scope.tien_do = (($scope.cau_hien_tai + 1) / $scope.tong_cau_hoi) * 100;
         }
     };
 
