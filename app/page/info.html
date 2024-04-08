@@ -82,7 +82,7 @@
                         <div class="col-md-6">
                             <label for="birthday" class="form-label">Ngày sinh</label>
                             <input ng-model="studentData.birthday" name="birthday" type="text" class="form-control"
-                                id="birthday" ng-required="true">
+                                id="birthday" ng-required="true" placeholder="dd-MM-yyyy">
                             <div class="text-danger" ng-show="infoForm.birthday.$dirty && infoForm.birthday.$error.required">
                                 Ngày sinh là bắt buộc
                             </div>
@@ -144,7 +144,7 @@
                             
                         </div>
                         <div class="col-12 d-grid mt-5">
-                            <button type="submit" class="btn btn-primary">Lưu</button>
+                            <button type="submit" id="" class="btn btn-primary">Lưu</button>
                         </div>
                     </form>
                     

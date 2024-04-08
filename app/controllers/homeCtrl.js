@@ -1,6 +1,5 @@
 app.controller('homeCtrl', function ($rootScope, $scope , $http) {
     $scope.checkLogin();
-    console.log('Đây là trang home');
     $scope.khoahoc = [];
     $http.get('app/db/Khoahoc.js').then(
         function (response) {

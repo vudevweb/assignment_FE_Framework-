@@ -1,9 +1,9 @@
 app.controller('infoCtrl', function ($scope, $rootScope, $http, $interval) {
 
     $scope.checkLogin()
-
     $scope.infoData = [];
     $scope.dataV = [];
+
     $scope.updateInfo = function () {
         document.getElementById('subUpdate').innerText = "Đang lưu thông tin...";
         document.getElementById('subUpdate').disabled = true;
@@ -39,7 +39,7 @@ app.controller('infoCtrl', function ($scope, $rootScope, $http, $interval) {
                         sessionStorage.setItem('studentsLogin', JSON.stringify($rootScope.studentsLogin));
                     })
                 .catch(function(error) {
-                    alert('Error fetching student data');
+                    alert('lỗi lấy student data');
                     console.error(error);
                 });
 
@@ -58,7 +58,8 @@ app.controller('infoCtrl', function ($scope, $rootScope, $http, $interval) {
     $scope.updatePass = function () {
         console.log($scope.passOld);
         console.log($scope.passNew);
-
+        document.getElementById('subChangePass').innerText = "Đang thay đổi mật khẩu..";
+        document.getElementById('subChangePass').disabled = true;
 
         fetch(`https://script.google.com/macros/s/AKfycbzZQZEf9Ihj65kxx96x2YnPNFmgmiD1YYtHMjBR4lN383Dx9N8m5Bnmn9foLNmy_F21/exec?id_change=${$rootScope.studentsLogin.ID}&passOld=${$scope.passOld}&passNew=${$scope.passNew}`, {
             method: "GET",
@@ -74,16 +75,20 @@ app.controller('infoCtrl', function ($scope, $rootScope, $http, $interval) {
             console.log(data.students);
             if(data.students.status == true) {
                 sweetAlert('Good job!', data.students.message, 'success');
+                document.getElementById('subChangePass').innerText = "Lưu";
+                document.getElementById('subChangePass').disabled = false;
             } else {
                 sweetAlert('Oops...', data.students.message, 'error');
+                document.getElementById('subChangePass').innerText = "Lưu";
+                document.getElementById('subChangePass').disabled = false;
             }
         })
         .catch(function(error) {
             console.error('Error changing password:', error);
             alert('Error changing password');
+            document.getElementById('subChangePass').innerText = "Lưu";
+            document.getElementById('subChangePass').disabled = false;
         });
-    
-        // alert('Đổi mật khẩu thành công!')
     }
 
 })
