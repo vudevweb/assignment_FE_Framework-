@@ -1,31 +1,32 @@
-app.controller('loginCtrl', function($scope, $rootScope, $http) {
-    $scope.username = '';
-    $scope.password = '';
-    $scope.rememberMe = false;
-
-    $http.get('http://localhost/fe_framework/api/students/read.php')
-        .then(
-            function(response) {
-                $scope.students = response.data.students;
-                // console.log($scope.students);
-            },
-            function(error) {
-                alert('Lỗi lấy students');
-                console.error(error);
-            }
-    );
-
+app.controller('loginCtrl', function($scope, $http , $rootScope) {
+    document.getElementById('subLogin').innerText = "Đăng nhập"
+    document.getElementById('subLogin').disabled = false;
     $scope.login = function() {
-        const student = $scope.students.find(s => s.username === $scope.username);
-        if (student && student.password == $scope.password) {
-            alert('Đăng nhập thành công');
-            sessionStorage.setItem('loginUser', student.id);
-            sessionStorage.setItem('loginStatus', true);
-            $rootScope.studentsLogin = student;
-            window.location.href = "#!home"; 
-        } else {
-            alert('Đăng nhập thất bại');
-        }
+        document.getElementById('subLogin').innerText = "Đang đăng nhập...";
+        document.getElementById('subLogin').disabled = true;        
+        $http.get(
+            `https://script.google.com/macros/s/AKfycbzZQZEf9Ihj65kxx96x2YnPNFmgmiD1YYtHMjBR4lN383Dx9N8m5Bnmn9foLNmy_F21/exec?username=${$scope.username}&password=${$scope.password}`
+        )
+            .then(
+                function(response) {
+                    let students = response.data.students;
+                    if(students.status == true) {
+                        sweetAlert('Good jod!',students.message,'success');
+                        sessionStorage.setItem('studentsLogin', JSON.stringify(students.student));
+                        document.getElementById('subLogin').innerText = "Đăng nhập"
+                        document.getElementById('subLogin').disabled = false;  
+                        setTimeout(() => window.location.href = "#!home" , 1500 )
+                    } else {
+                        sweetAlert('Oops...',students.message,'error');
+                        document.getElementById('subLogin').innerText = "Đăng nhập"
+                        document.getElementById('subLogin').disabled = false;  
+                    }
+                },
+                function(error) {
+                    alert('Lỗi lấy students');
+                    console.error(error);
+                }
+        );
     };
     
 });

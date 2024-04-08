@@ -1,4 +1,4 @@
-app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http, $interval) {
+app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http, $interval , $rootScope) {
     $scope.id_monhoc = $routeParams.id_monhoc;
     $scope.id_khoahoc = $routeParams.id_khoahoc;
 
@@ -24,7 +24,6 @@ app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http,
     $scope.tong_cau_hoi = 0;
     $scope.tien_do = 0;
     var timer;
-    $scope.thoi_gian = 500000;
     $scope.so_cau_dung = 0;
 
     $scope.btn_prev = false;
@@ -36,6 +35,7 @@ app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http,
 
     $scope.data_ch = [];
     $scope.tong_cau_hoi = 15;
+
     // thời gian làm bài 
     $scope.minutes = 15;
     $scope.seconds = 10;
@@ -54,7 +54,11 @@ app.controller('monhocTestCtrl', function ($scope, $routeParams, $window, $http,
         }
     );
 
-    $scope.startQuiz = function () { // Renamed function start to startQuiz
+    $scope.startQuiz = function () {
+        if($rootScope.loginStatus != true) {
+            sweetAlert('Oops...', 'Bạn chưa đăng nhập!', 'error')
+            return;
+        }
         $scope.diem = 0;
         $scope.status_start = false;
         $scope.quiz = true;
