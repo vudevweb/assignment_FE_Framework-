@@ -53,7 +53,7 @@
                         <div class="col-md-6">
                             <label for="inputName" class="form-label">Họ & tên</label>
                             <input ng-model="studentsLogin.fullname" name="inputName" type="text" class="form-control"
-                                id="inputName" ng-required="true" ng-minlength="3" ng-maxlength="50">
+                                id="inputName" required="true" minlength="3" maxlength="50">
                             <div class="text-danger"
                                 ng-show="infoForm.inputName.$dirty && infoForm.inputName.$error.required">
                                 Họ & tên là bắt buộc
@@ -68,7 +68,7 @@
                         <div class="col-md-6">
                             <label for="inputEmail" class="form-label">Email</label>
                             <input ng-model="studentsLogin.email" type="email" class="form-control"
-                                id="inputEmail" name="inputEmail" ng-required="true">
+                                id="inputEmail" name="inputEmail" required="true">
                             <div class="text-danger"
                                 ng-show="infoForm.inputEmail.$dirty && infoForm.inputEmail.$error.required">
                                 Email là bắt buộc
@@ -82,7 +82,7 @@
                         <div class="col-md-6">
                             <label for="birthday" class="form-label">Ngày sinh</label>
                             <input ng-model="studentData.birthday" name="birthday" type="text" class="form-control"
-                                id="birthday" ng-required="true" placeholder="dd-MM-yyyy">
+                                id="birthday" required="true" placeholder="dd-MM-yyyy">
                             <div class="text-danger" ng-show="infoForm.birthday.$dirty && infoForm.birthday.$error.required">
                                 Ngày sinh là bắt buộc
                             </div>
@@ -108,7 +108,9 @@
             <!-- đổi pass -->
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 <div class="card card-my_edit p-4 px-5" style="border: 0 !important;">
+
                     <form name="passForm" ng-submit="passForm.$valid && updatePass()">
+                        <!-- pass cũ -->
                         <div class="mb-3">
                             <label for="passOld" class="form-label">Mật khẩu cũ</label>
                             <input ng-model="passOld" placeholder="******************" type="password" name="passOld" class="form-control" id="passOld" required minlength="4">
@@ -117,6 +119,8 @@
                                 <span ng-show="passForm.passOld.$error.minlength">Mật khẩu quá ngắn</span>
                             </div>
                         </div>
+
+                        <!-- pass mới  -->
                         <div class="mb-3">
                             <label for="passNew" class="form-label">Mật khẩu mới</label>
                             <input ng-model="passNew" placeholder="******************" type="password" name="passNew" ng-model="passNew" class="form-control" id="passNew" required minlength="4">
@@ -127,6 +131,8 @@
                                 Mật khẩu mới quá ngắn
                             </div>
                         </div>
+
+                        <!-- pass xác nhận -->
                         <div class="mb-3">
                             <label for="confirmPass" class="form-label">Xác nhận mật khẩu mới</label>
                             <input placeholder="******************" type="password" name="confirmPass" ng-model="confirmPass" class="form-control" id="confirmPass" required minlength="4" ng-pattern="passNew">
@@ -143,8 +149,9 @@
                             </div>
                             
                         </div>
+
                         <div class="col-12 d-grid mt-5">
-                            <button type="submit" id="" class="btn btn-primary">Lưu</button>
+                            <button type="submit" id="subChangePass" class="btn btn-primary">Lưu</button>
                         </div>
                     </form>
                     

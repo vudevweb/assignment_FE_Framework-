@@ -11,22 +11,20 @@
 <section class="container d-flex flex-column">
     <div class="row align-items-center justify-content-center g-0 min-vh-100">
         <div class="col-lg-5 col-md-8 py-3 py-xl-0">
-            <!-- Card -->
             <div class="card shadow" style="border-radius: 20px; border: none;">
-                <!-- Card body -->
                 <div class="card-body p-6" style="padding: 2.5rem;">
                     <div class="mb-4">
                         <h1 class="mb-1 fw-bold">Đăng ký</h1>
                         <span>Bạn đã có tài khoản? <a href="#!login" class="ms-1 text-primary">Đăng nhập
                                 ngay</a></span>
                     </div>
-                    <!-- Form -->
+
                     <form name="registerForm" ng-submit="registerForm.$valid && register()">
                         <!-- tên -->
                         <div class="mb-3">
                             <label for="fullname" class="form-label">Họ & tên</label>
                             <input ng-model="fullname" type="text" id="fullname" class="form-control" name="fullname"
-                                placeholder="Nhập fullname của bạn tại đây" required ng-minlength="3" ng-maxlength="50">
+                                placeholder="Nhập fullname của bạn tại đây" required minlength="3" maxlength="50">
                             <div class="text-danger"
                                 ng-show="registerForm.fullname.$dirty && registerForm.fullname.$invalid">
                                 <span ng-show="registerForm.fullname.$error.required">Họ & tên là bắt buộc</span>
@@ -35,6 +33,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <!-- Email -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>

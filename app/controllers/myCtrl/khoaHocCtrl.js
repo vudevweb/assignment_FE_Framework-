@@ -6,7 +6,6 @@ app.controller('khoaHocCtrl', function($scope, $routeParams , $http, $location) 
     $http.get('app/db/Subjects.js').then(
         function(response) {
             $scope.monhoc = response.data;
-            // console.log(response.data);
             $scope.monhoc = $scope.monhoc.filter(function(item) {
                 return item.id_kh === $scope.id_khoahoc.toUpperCase();
             });
